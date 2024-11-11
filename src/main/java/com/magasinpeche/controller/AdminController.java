@@ -29,32 +29,55 @@ public class AdminController {
 
     @GetMapping("/produits")
     public String getAllProduits(Model model) {
-
+        List<Produit> produits = produitService.getAllProduits();
+        model.addAttribute("produits", produits);
         return "admin/produits/liste_produits";
     }
 
     @GetMapping("/produits/{id}")
     public ResponseEntity<Produit> getProduitById(@PathVariable Long id) {
-
+        Produit produit = produitService.getProduitById(id);
         return produit != null ? ResponseEntity.ok(produit) : ResponseEntity.notFound().build();
     }
 
     @GetMapping("/produits/ajouter")
     public String afficherFormulaireAjout(Model model) {
-
+        model.addAttribute("produit", new Produit());
         return "admin/produits/ajouter_produit";
     }
 
     @PostMapping("/produits/ajouter")
     public String createProduit(@ModelAttribute Produit produit, @RequestParam("imageFile") MultipartFile imageFile) {
+        if (!imageFile.isEmpty()) {
+            try {
+                String originalFileName = imageFile.getOriginalFilename();
+                Path filePath = Paths.get(UPLOAD_DIR + originalFileName);
+                int count = 1;
 
+                while (Files.exists(filePath)) {
+                    String newFileName = originalFileName.replaceFirst("(\\.[^\\.]+)$", "_" + count + "$1");
+                    filePath = Paths.get(UPLOAD_DIR + newFileName);
+                    count++;
+                }
 
-        return "redirect:/admin/produits"; // Redirection vers la liste des produits dans le sous-chemin admin
+                Files.copy(imageFile.getInputStream(), filePath);
+                produit.setImageUrl("/" + UPLOAD_DIR + filePath.getFileName().toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        produitService.createProduit(produit);
+        return "redirect:/admin/produits";
     }
 
     @GetMapping("/produits/modifier/{id}")
     public String afficherFormulaireModification(@PathVariable("id") Long id, Model model) {
-
+        Produit produit = produitService.getProduitById(id);
+        if (produit != null) {
+            model.addAttribute("produit", produit);
+            model.addAttribute("categorie", Categorie.values());
+            return "admin/produits/modifier_produit";
+        }
         return "redirect:/admin/produits";
     }
 
@@ -62,6 +85,32 @@ public class AdminController {
     public String updateProduit(@PathVariable("id") Long id,
                                 @ModelAttribute Produit produitDetails,
                                 @RequestParam("imageFile") MultipartFile imageFile) {
+        Produit produitExist = produitService.getProduitById(id);
+
+        if (produitExist != null) {
+            if (!imageFile.isEmpty()) {
+                try {
+                    String originalFileName = imageFile.getOriginalFilename();
+                    Path filePath = Paths.get(UPLOAD_DIR + originalFileName);
+                    int count = 1;
+
+                    while (Files.exists(filePath)) {
+                        String newFileName = originalFileName.replaceFirst("(\\.[^\\.]+)$", "_" + count + "$1");
+                        filePath = Paths.get(UPLOAD_DIR + newFileName);
+                        count++;
+                    }
+
+                    Files.copy(imageFile.getInputStream(), filePath);
+                    produitDetails.setImageUrl("/" + UPLOAD_DIR + filePath.getFileName().toString());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                produitDetails.setImageUrl(produitExist.getImageUrl());
+            }
+
+            produitService.updateProduit(id, produitDetails);
+        }
 
         return "redirect:/admin/produits";
     }
@@ -79,7 +128,7 @@ public class AdminController {
     }
 
 
-// OtherPage: Concour
+// PageConcours
 
     @Autowired
     private ConcoursRepository concoursRepository;
@@ -87,24 +136,25 @@ public class AdminController {
 
     @GetMapping("/concours")
     public String afficherConcours(Model model) {
-
+        LocalDate today = LocalDate.now();
+        model.addAttribute("concoursList", concoursRepository.findUpcomingConcoursSortedByDate(today));
         return "admin/concours/liste";
     }
 
 
     @GetMapping("/concours/ajouter")
     public String afficherFormulaireConcours(Model model) {
-
+        model.addAttribute("concours", new Concours());
         return "admin/concours/form";
     }
 
 
     @GetMapping("/concours/modifier/{id}")
     public String afficherFormulaireModificationConcours(@PathVariable Long id, Model model) {
-
+        Concours concours = concoursRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Concours invalide"));
+        model.addAttribute("concours", concours);
         return "admin/concours/form";
     }
-
 
     @PostMapping("/concours/soumettre")
     public String soumettreConcours(@RequestParam(required = false) Long id,
@@ -112,13 +162,27 @@ public class AdminController {
                                     @RequestParam String date,
                                     @RequestParam String lieu,
                                     @RequestParam String description) {
-
+        Concours concours;
+        if (id != null) {
+            concours = concoursRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Concours invalide"));
+        } else {
+            concours = new Concours();
+        }
+        concours.setNom(nom);
+        concours.setDate(LocalDate.parse(date));
+        concours.setLieu(lieu);
+        concours.setDescription(description);
+        concoursRepository.save(concours);
         return "redirect:/admin/concours";
     }
-
 
     @GetMapping("/concours/supprimer/{id}")
     public String supprimerConcours(@PathVariable Long id) {
+        Concours concours = concoursRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Concours invalide"));
+        concoursRepository.delete(concours);
+
         return "redirect:/admin/concours";
     }
+
+
 }

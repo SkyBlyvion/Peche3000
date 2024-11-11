@@ -24,27 +24,34 @@ public class PermisController {
 
     @GetMapping("/demande")
     public String demandePermisForm(Model model, Principal principal) {
-
+        Client client = clientService.findByEmail(principal.getName()).orElse(null);
+        model.addAttribute("permis", new Permis());
+        model.addAttribute("clientId", client.getId());
         return "permis/demande";
     }
 
     @PostMapping("/demande")
     public String soumettreDemande(@ModelAttribute Permis permis, @RequestParam Long clientId) {
-
+        Client client = clientService.findById(clientId).orElse(null);
+        permis.setClient(client);
+        permisService.save(permis);
         return "redirect:/profil";
     }
 
 
+    // /liste et /traiter dans #AdminController
+
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/liste")
     public String listDemandes(Model model) {
-
-        return "permis/list"; /
+        model.addAttribute("demandes", permisService.findAllOrderedByDate());
+        return "permis/list";
     }
 
     @PostMapping("/traiter/{id}")
     public String traiterDemande(@PathVariable Long id, @RequestParam Statut statut) {
-
+        permisService.updateStatut(id, statut);
+        // Appel à une méthode pour envoyer une notification par email
         return "redirect:/permis/liste";
     }
 }

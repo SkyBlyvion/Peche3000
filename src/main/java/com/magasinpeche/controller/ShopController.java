@@ -24,12 +24,17 @@ public class ShopController {
 
     @GetMapping
     public String getAllProduits(Model model) {
+        List<Produit> produits = produitService.getAllProduits();
+
+        model.addAttribute("produits", produits);
         return "/boutique/liste";
     }
 
     // page détail
     @GetMapping("/boutique/{id}")
     public String getProduit(@PathVariable("id") Long id, Model model) {
+        Produit produit = produitService.getProduitById(id);
+        model.addAttribute("produit", produit);
         return "/boutique/detail";
     }
 }
