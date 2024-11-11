@@ -2,7 +2,27 @@
 
 ## Documentation 
 
-### Creation du Projet 
+### Creation du Projet :
+    GroupID: com.magasinpeche
+    ArtifactID: 
+
+#### Installer Maven : 
+``sudo apt install maven`` 
+puis check la version
+``mvn -v``
+
+Résultat
+``Apache Maven 3.6.3
+Maven home: /usr/share/maven
+Java version: 17.0.12, vendor: Ubuntu, runtime: /usr/lib/jvm/java-17-openjdk-amd64
+Default locale: fr_FR, platform encoding: UTF-8
+OS name: "linux", version: "6.8.0-48-generic", arch: "amd64", family: "unix"
+``
+
+#### installer les dépendences
+
+
+
 Étape 1 : Analyse de la donnée (Dictionnaire des données)
 Dans cette étape, nous allons identifier les différentes entités (objets métier) de l'application et leurs propriétés.
 
