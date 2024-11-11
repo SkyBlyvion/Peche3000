@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h1 class="card_title">Inscription</h1>
+        <form class="card_form" th:action="@{/register}" th:object="${client}" method="post">
+
+            <!-- Nom -->
+            <div class="input">
+                <input type="text" th:field="*{nom}" class="input_field" id="nom" required/>
+                <label for="nom" class="input_label">Nom</label>
+            </div>
+
+            <!-- Prénom -->
+            <div class="input">
+                <input type="text" th:field="*{prenom}" class="input_field" id="prenom" required/>
+                <label for="prenom" class="input_label">Prénom</label>
+            </div>
+
+            <!-- Email -->
+            <div class="input">
+                <input type="email" th:field="*{email}" class="input_field" id="email" required/>
+                <label for="email" class="input_label">Email</label>
+            </div>
+
+            <!-- Adresse -->
+            <div class="input">
+                <input type="text" th:field="*{adresse}" class="input_field" id="adresse" required/>
+                <label for="adresse" class="input_label">Adresse</label>
+            </div>
+
+            <!-- Téléphone -->
+            <div class="input">
+                <input type="text" th:field="*{telephone}" class="input_field" id="telephone" required/>
+                <label for="telephone" class="input_label">Téléphone</label>
+            </div>
+
+            <!-- Mot de passe -->
+            <div class="input">
+                <input type="password" th:field="*{password}" class="input_field" id="password" required/>
+                <label for="password" class="input_label">Mot de passe</label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="card_button">Inscription</button>
+        </form>
+
+        <!-- Login Redirect -->
+        <div class="card_info">
+            <p>Déjà un compte? <a th:href="@{/login}">Se connecter</a></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
