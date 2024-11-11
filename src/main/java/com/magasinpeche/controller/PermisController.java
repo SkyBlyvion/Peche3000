@@ -45,7 +45,7 @@ public class PermisController {
     @GetMapping("/liste")
     public String listDemandes(Model model) {
         model.addAttribute("demandes", permisService.findAllOrderedByDate());
-        return "permis/list";
+        return "liste";
     }
 
     @PostMapping("/traiter/{id}")
