@@ -1,35 +1,70 @@
 # Peche3000
 
 ## Documentation 
+    - PreSetup 2h:
+        - Dictionnaire des données
+        - MCD, MLD
+
+    - Setup 1h: 
+        - creation repo, git init, install deps, configure bdd
+        - SDK : correto-17; Amazon Corretto 17.0.13
+
+    - Backend Dev 3h:
+        - créer les entités et enums
+        - créer les services, repositories et controllers
+        - implementer Login et Register
+
+    - Frontend Dev 2h:
+        - design templates
+        - style templates
+
+    - Navigation 1h:
+        - navigation
+        
+    - Reste des pages et customLogic ...h until 18/11/24
 
 ### Creation du Projet :
     GroupID: com.magasinpeche
-    ArtifactID: 
+    ArtifactID: SpringBootPeche3000LN
 
     sudo mysql -u root -p
-    j'ai ensuite login, puis j'ai crée ma bdd DBMagasinPeche 
+
+    créer la bdd DBMagasinPeche :
+        CREATE DATABASE DBMagasinPeche;
+
+    créer un user :
+        CREATE USER 'user'@'localhost' IDENTIFIED BY 'admin';
+
+    donner les droits :
+        GRANT ALL PRIVILEGES ON DBMagasinPeche.* TO 'user'@'localhost';
+
+    Flusher :   
+        FLUSH PRIVILEGES;
 
 #### Installer Maven : 
 ``sudo apt install maven`` 
 puis check la version
 ``mvn -v``
 
-Résultat
-``Apache Maven 3.6.3
-Maven home: /usr/share/maven
-Java version: 17.0.12, vendor: Ubuntu, runtime: /usr/lib/jvm/java-17-openjdk-amd64
-Default locale: fr_FR, platform encoding: UTF-8
-OS name: "linux", version: "6.8.0-48-generic", arch: "amd64", family: "unix"
-``
+#### installer les dépendences :
+    - spring-boot-starter-data-jpa
+    - spring-boot-starter-security
+    - spring-boot-starter-thymeleaf
+    - spring-boot-starter-web
+    - thymeleaf-extras-springsecurity6
+    - mariadb-java-client
+    - spring-boot-starter-test
+    - spring-security-test
+    - spring-boot-devtools
 
-#### installer les dépendences
+### Entités, enums, services, repositories, controllers, etc.
+
+### Templates, styles, js etc.
 
 
 
-Étape 1 : Analyse de la donnée (Dictionnaire des données)
-Dans cette étape, nous allons identifier les différentes entités (objets métier) de l'application et leurs propriétés.
-
-Dictionnaire des données (entités principales) :
+## Ressources 
+### Dictionnaire des données (entités principales) :
 
 Produit :
 id : Identifiant unique (clé primaire)
