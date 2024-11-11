@@ -6,6 +6,9 @@
     GroupID: com.magasinpeche
     ArtifactID: 
 
+    sudo mysql -u root -p
+    j'ai ensuite login, puis j'ai crée ma bdd DBMagasinPeche 
+
 #### Installer Maven : 
 ``sudo apt install maven`` 
 puis check la version
