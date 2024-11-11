@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
     <link rel="stylesheet" th:href="@{/css/auth.css}">
 </head>
@@ -9,24 +11,34 @@
 <div class="container">
     <div class="card">
         <h1 class="card_title">Connexion</h1>
+
         <form class="card_form" th:action="@{/login}" method="post">
+            <!-- Email -->
             <div class="input">
-                <input type="email" name="username" class="input_field" required/>
-                <label class="input_label">Email</label>
+                <input type="email" name="username" id="username" class="input_field" required/>
+                <label for="username" class="input_label">Email</label>
             </div>
+
+            <!-- Mot de passe -->
             <div class="input">
-                <input type="password" name="password" class="input_field" required/>
-                <label class="input_label">Mot de passe</label>
+                <input type="password" name="password" id="password" class="input_field" required/>
+                <label for="password" class="input_label">Mot de passe</label>
             </div>
+
+            <!-- Message d'erreur -->
+            <div th:if="${param.error}" class="error_message">
+                Erreur : Email ou mot de passe invalide.
+            </div>
+
+            <!-- Bouton de connexion -->
             <button type="submit" class="card_button">Se connecter</button>
-            <div th:if="${param.error}" style="color:red;">Erreur : Email ou mot de passe invalide.</div>
         </form>
+
+        <!-- Redirection vers l'inscription -->
         <div class="card_info">
-            <p>Pas enregistré? <a th:href="@{/register}">Créer un compte</a></p>
+            <p>Pas encore inscrit ? <a th:href="@{/register}">Créer un compte</a></p>
         </div>
     </div>
-
-
 </div>
 
 </body>
