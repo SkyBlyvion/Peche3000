@@ -21,7 +21,12 @@ public class CommandeController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Commande> getCommandeById(@PathVariable Long id) {
-
+        Commande commande = commandeService.getCommandeById(id);
+        if (commande != null) {
+            return ResponseEntity.ok(commande);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping
@@ -31,12 +36,17 @@ public class CommandeController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Commande> updateCommande(@PathVariable Long id, @RequestBody Commande commandeDetails) {
-
+        Commande updatedCommande = commandeService.updateCommande(id, commandeDetails);
+        if (updatedCommande != null) {
+            return ResponseEntity.ok(updatedCommande);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCommande(@PathVariable Long id) {
-
+        commandeService.deleteCommande(id);
         return ResponseEntity.noContent().build();
     }
 }

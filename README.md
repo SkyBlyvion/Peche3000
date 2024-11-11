@@ -58,7 +58,7 @@ statut : Statut de la commande (en attente, expédiée, livrée)
 Permis de pêche :
 id : Identifiant unique (clé primaire)
 client : Référence au client (clé étrangère)
-statut : Statut de la demande (en attente, approuvé, rejeté)
+statut : Statut de la demande (en attente, approuve, rejeté)
 dateDemande : Date de la demande
 
 Concours :
