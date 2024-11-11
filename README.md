@@ -31,11 +31,12 @@ Dictionnaire des données (entités principales) :
 Produit :
 id : Identifiant unique (clé primaire)
 nom : Nom du produit
-categorie : Catégorie du produit (ex: cannes à pêche, appâts)
 description : Description du produit
 prix : Prix du produit
 stock : Quantité disponible en stock
+categorie : Catégorie du produit (ex: cannes à pêche, appâts)
 imageUrl : URL de l'image du produit
+DateCreation : Date de création du produit
 
 Client :
 id : Identifiant unique (clé primaire)
