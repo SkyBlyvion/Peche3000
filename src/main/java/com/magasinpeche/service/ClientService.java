@@ -19,10 +19,10 @@ public class ClientService {
     private PasswordEncoder passwordEncoder;
 
     public Client save(Client client) {
-        // Ici, nous attribuons toujours le rôle USER
-        client.setRole(Role.USER); // Attribue le rôle USER à tous les nouveaux utilisateurs
 
-        // Encode le mot de passe avant de sauvegarder
+        client.setRole(Role.USER);
+
+
         client.setPassword(passwordEncoder.encode(client.getPassword()));
         return clientRepository.save(client);
     }
@@ -31,7 +31,7 @@ public class ClientService {
         return clientRepository.findByEmail(email);
     }
 
-    // find by id
+
     public Optional<Client> findById(Long id) {
         return clientRepository.findById(id);
     }
