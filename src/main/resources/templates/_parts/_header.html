@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Header</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+</head>
+<body>
+<header class="header-box">
+    <div class="header-logo">
+        <h1><a th:href="@{/}">Pêche 3000</a></h1>
+    </div>
+    <nav class="header-navbar">
+        <ul>
+            <li>
+                <a th:href="@{/}">Accueil:
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g>
+                            <path fill="none" d="M0 0h24v24H0z"/>
+                            <path fill="currentColor"
+                                  d="M19 21H5a1 1 0 0 1-1-1v-9H1l10.327-9.388a1 1 0 0 1 1.346 0L23 11h-3v9a1 1 0 0 1-1 1zM6 19h12V9.157l-6-5.454-6 5.454V19z"/>
+                        </g>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/shop}" class="nav-link" title="Boutique">Shop:
+                    <svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400px" height="400px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve" fill="#000000" stroke="#000000" stroke-width="0.00064"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path fill="#ffffff" d="M59,0H5C2.789,0,1,1.789,1,4v20c0,2.22,1.208,4.152,3,5.19V60c0,2.211,1.789,4,4,4h48c2.211,0,4-1.789,4-4 V29.19c1.792-1.038,3-2.971,3-5.19V4C63,1.789,61.211,0,59,0z M51,2v22c0,2.209-1.791,4-4,4s-4-1.791-4-4V2H51z M41,2v22 c0,2.209-1.791,4-4,4s-4-1.791-4-4V2H41z M31,2v22c0,2.209-1.791,4-4,4s-4-1.791-4-4V2H31z M21,2v22c0,2.209-1.791,4-4,4 s-4-1.791-4-4V2H21z M3,4c0-1.104,0.896-2,2-2h6v22c0,2.209-1.791,4-4,4s-4-1.791-4-4V4z M12,62V38h12v10h-1c-0.553,0-1,0.447-1,1 s0.447,1,1,1h1v12H12z M58,60c0,1.104-0.896,2-2,2H26V37c0-0.516-0.447-1-1-1H11c-0.553,0-1,0.447-1,1v25H8c-1.104,0-2-0.896-2-2 V29.91C6.326,29.965,6.658,30,7,30c2.088,0,3.926-1.068,5-2.687C13.074,28.932,14.912,30,17,30s3.926-1.068,5-2.687 C23.074,28.932,24.912,30,27,30s3.926-1.068,5-2.687C33.074,28.932,34.912,30,37,30s3.926-1.068,5-2.687 C43.074,28.932,44.912,30,47,30s3.926-1.068,5-2.687C53.074,28.932,54.912,30,57,30c0.342,0,0.674-0.035,1-0.09V60z M57,28 c-2.209,0-4-1.791-4-4V2h6c1.104,0,2,0.896,2,2v20C61,26.209,59.209,28,57,28z"></path> <path fill="#ffffff" d="M53,36H29c-0.553,0-1,0.447-1,1v20c0,0.553,0.447,1,1,1h24c0.553,0,1-0.447,1-1V37 C54,36.447,53.553,36,53,36z M52,56H30V38h22V56z"></path> <path fill="#ffffff" d="M48.293,42.707C48.488,42.902,48.744,43,49,43s0.512-0.098,0.707-0.293c0.391-0.391,0.391-1.023,0-1.414 l-1-1c-0.391-0.391-1.023-0.391-1.414,0s-0.391,1.023,0,1.414L48.293,42.707z"></path> <path fill="#ffffff" d="M48.293,47.707C48.488,47.902,48.744,48,49,48s0.512-0.098,0.707-0.293c0.391-0.391,0.391-1.023,0-1.414 l-6-6c-0.391-0.391-1.023-0.391-1.414,0s-0.391,1.023,0,1.414L48.293,47.707z"></path> </g> </g></svg>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/concours}" class="nav-link" title="Concours">Concours:
+                    <svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400px" height="400px" viewBox="0 0 65 30" enable-background="new 0 0 65 30" xml:space="preserve" fill="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Competition</title> <desc>Created with Sketch.</desc> <g id="Page-1" sketch:type="MSPage"> <g id="Competition" transform="translate(1.000000, 1.000000)" sketch:type="MSLayerGroup"> <path id="Shape" sketch:type="MSShapeGroup" fill="none" stroke="#ffffff" stroke-width="2" d="M60.1,7h-16c-1.1,0-2,0.9-2,2 v4.083V2c0-1.1-0.9-2-2-2h-20c-1.1,0-2,0.9-2,2v15.583V14c0-1.1-0.9-2-2-2h-14c-1.1,0-2,0.9-2,2v12c0,1.1,0.9,2,2,2h58 c1.1,0,2-0.9,2-2V9C62.1,7.9,61.2,7,60.1,7L60.1,7z"></path> <path id="Shape_1_" sketch:type="MSShapeGroup" fill="none" stroke="#ffffff" stroke-width="2" d="M27.1,15l3-3v9"></path> <path id="Shape_2_" sketch:type="MSShapeGroup" fill="none" stroke="#ffffff" stroke-width="2" d="M50.1,16c0-1.1,0.9-2,2-2 c1.1,0,2,0.9,2,2c0,3.3-4,6-4,6h5"></path> <path id="Shape_3_" sketch:type="MSShapeGroup" fill="none" stroke="#ffffff" stroke-width="2" d="M7.1,21.9c0,1.1,0.9,2,2,2 s2-0.9,2-2s-0.9-2-2-2l0,0c1.1,0,2-0.9,2-2s-0.9-2-2-2s-2,0.9-2,2"></path> </g> </g> </g></svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="header-misc">
+        <div class="profile-container">
+            <a th:href="@{/profil}" class="misc-link" title="Profil">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <g>
+                        <path fill="none" d="M0 0h24v24H0z"/>
+                        <path
+                                d="M20 22h-2v-2a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v2H4v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2zm-8-9a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
+                    </g>
+                </svg>
+            </a>
+        </div>
+    </div>
+</header>
+</body>
+</html>
