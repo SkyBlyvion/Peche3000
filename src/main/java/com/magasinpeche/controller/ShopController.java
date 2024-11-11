@@ -27,14 +27,14 @@ public class ShopController {
         List<Produit> produits = produitService.getAllProduits();
 
         model.addAttribute("produits", produits);
-        return "/boutique/liste";
+        return "/shop/liste";
     }
 
     // page détail
-    @GetMapping("/boutique/{id}")
+    @GetMapping("/shop/{id}")
     public String getProduit(@PathVariable("id") Long id, Model model) {
         Produit produit = produitService.getProduitById(id);
         model.addAttribute("produit", produit);
-        return "/boutique/detail";
+        return "/shop/detail";
     }
 }

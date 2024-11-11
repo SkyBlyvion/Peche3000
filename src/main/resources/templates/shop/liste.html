@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+</head>
+
+<body>
+<!-- Header -->
+<div th:insert="~{_parts/_header :: header}"></div>
+
+<!-- Main Content -->
+<main class="shop-box">
+    <!-- Sidebar -->
+    <aside class="shop-navbar">
+        <h2 class="shop-titre">Recherche</h2>
+
+        <!-- Search Bar -->
+        <div class="searchInputWrapper">
+            <input id="searchInput" class="searchInput" type="text" placeholder="Rechercher...">
+            <svg class="searchIcon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024">
+                <path fill="currentColor"
+                      d="M1014.64 969.04L703.71 656.207c57.952-69.408 92.88-158.704 92.88-256.208c0-220.912-179.088-400-400-400s-400 179.088-400 400s179.088 400 400 400c100.368 0 192.048-37.056 262.288-98.144l310.496 312.448c12.496 12.497 32.769 12.497 45.265 0c12.48-12.496 12.48-32.752 0-45.263zM396.59 736.527c-185.856 0-336.528-150.672-336.528-336.528S210.734 63.471 396.59 63.471s336.528 150.672 336.528 336.528S582.446 736.527 396.59 736.527"/>
+            </svg>
+        </div>
+
+        <!-- Categories -->
+        <div class="category-icons">
+            <!-- Ajouter les icônes de catégories ici -->
+        </div>
+
+        <!-- Reset Button -->
+        <button class="search-button">Réinitialiser</button>
+    </aside>
+
+    <!-- Product List -->
+    <section class="shop-content">
+        <h2 class="shop-titre">Les Articles</h2>
+        <div class="hp-produits-liste">
+            <div class="produits-container" th:fragment="produits-fragment">
+                <!-- Product Item -->
+                <div th:each="produit : ${produits}" class="produit-box" th:data-category="${produit.categorie}">
+                    <a class="produit-link" th:href="@{'/shop/shop/' + ${produit.id}}">
+                        <div class="produit-image">
+                            <img th:src="${produit.imageUrl}" alt="Image de ${produit.nom}"/>
+                        </div>
+                        <div class="produit-details">
+                            <h2 th:text="${produit.nom}"></h2>
+                            <p th:text="${produit.description}"></p>
+                            <div class="produit-footer">
+                                <span class="produit-prix" th:text="${produit.prix} + ' €'"></span>
+                                <span class="produit-stock" th:text="'Stock: ' + ${produit.quantite}"></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+</body>
+
+</html>
