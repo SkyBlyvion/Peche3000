@@ -18,7 +18,7 @@ a:hover {
 }
 
 /* Conteneur principal */
-.hp-box {
+.homepage-container {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -28,9 +28,9 @@ a:hover {
     max-width: 1200px;
 }
 
-/* Section des produits */
-.hp-produits,
-.hp-concours {
+/* Section des produits et des concours */
+.product-section,
+.contest-section {
     background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -40,32 +40,38 @@ a:hover {
     min-width: 300px;
 }
 
-.hp-titre h2 {
+.section-header h2 {
     font-size: 24px;
     margin: 0 0 20px;
     text-align: center;
     font-weight: bold;
 }
 
-.hp-titre a {
+.section-header a {
     color: #333;
     text-decoration: none;
     transition: color 0.3s, transform 0.3s;
 }
 
-.hp-titre a:hover {
+.section-header a:hover {
     color: #007bff;
     transform: scale(1.1);
 }
 
 /* Liste des produits */
-.produits-container {
+.product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
 
-.produit-box {
+.product-card {
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
@@ -76,55 +82,55 @@ a:hover {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.produit-box:hover {
+.product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.produit-image img {
-    width: 60%;
+.product-image img {
+    width: 100%;
     height: auto;
     border-radius: 8px;
 }
 
-.produit-details h3 {
+.product-details h3 {
     font-size: 18px;
     margin: 10px 0;
     color: #333;
 }
 
-.produit-details p {
+.product-details p {
     font-size: 14px;
     margin: 0 0 10px;
     color: #666;
 }
 
-.produit-footer {
+.product-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: auto;
 }
 
-.produit-prix {
+.product-price {
     font-size: 16px;
     font-weight: bold;
     color: #28a745;
 }
 
-.produit-stock {
+.product-stock {
     font-size: 14px;
     color: #555;
 }
 
 /* Section des concours */
-.concours-container {
+.contest-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.concours-header {
+.contest-header {
     display: flex;
     justify-content: space-between;
     font-weight: bold;
@@ -133,7 +139,7 @@ a:hover {
     padding-bottom: 10px;
 }
 
-.concours-row {
+.contest-row {
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
@@ -141,11 +147,11 @@ a:hover {
     transition: background-color 0.3s;
 }
 
-.concours-row:hover {
+.contest-row:hover {
     background-color: #f8f9fa;
 }
 
-.concours-cell {
+.contest-cell {
     flex: 1;
     text-align: center;
     font-size: 14px;
@@ -154,13 +160,13 @@ a:hover {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .hp-box {
+    .homepage-container {
         flex-direction: column;
         gap: 20px;
     }
 
-    .hp-produits,
-    .hp-concours {
+    .product-section,
+    .contest-section {
         flex: 1 1 100%;
     }
 }

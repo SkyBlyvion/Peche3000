@@ -1,0 +1,79 @@
+/* Styles généraux */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Conteneur principal */
+.product-detail {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre du produit */
+.product-detail h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Image du produit */
+.product-detail img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    margin: 20px auto;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Description */
+.product-detail p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Prix et stock */
+.product-detail p strong {
+    font-weight: bold;
+    color: #333;
+}
+
+.product-detail p span {
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .product-detail {
+        padding: 15px;
+        margin: 20px;
+    }
+
+    .product-detail h1 {
+        font-size: 24px;
+    }
+
+    .product-detail p {
+        font-size: 14px;
+    }
+}

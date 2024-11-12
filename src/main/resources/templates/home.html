@@ -14,26 +14,26 @@
 
 <!-- Contenu principal -->
 <main>
-    <section class="hp-box">
+    <section class="homepage-container">
         <!-- Section des produits -->
-        <div class="hp-produits">
-            <header class="hp-titre">
+        <div class="product-section">
+            <header class="section-header">
                 <h2><a th:href="@{/boutique}">Derniers produits</a></h2>
             </header>
-            <div class="hp-produits-liste">
-                <div class="produits-container">
-                    <div th:each="produit : ${produits}" class="produit-box">
+            <div class="product-list">
+                <div class="product-grid">
+                    <div th:each="produit : ${produits}" class="product-card">
                         <!-- Image du produit -->
-                        <div class="produit-image">
+                        <div class="product-image">
                             <img th:src="${produit.imageUrl}" alt="Image de produit : ${produit.nom}"/>
                         </div>
                         <!-- Détails du produit -->
-                        <div class="produit-details">
+                        <div class="product-details">
                             <h3 th:text="${produit.nom}"></h3>
                             <p th:text="${produit.description}"></p>
-                            <footer class="produit-footer">
-                                <span class="produit-prix" th:text="${produit.prix} + ' €'"></span>
-                                <span class="produit-stock" th:text="'Stock : ' + ${produit.quantite}"></span>
+                            <footer class="product-footer">
+                                <span class="product-price" th:text="${produit.prix} + ' €'"></span>
+                                <span class="product-stock" th:text="'Stock : ' + ${produit.quantite}"></span>
                             </footer>
                         </div>
                     </div>
@@ -42,23 +42,23 @@
         </div>
 
         <!-- Section des concours -->
-        <div class="hp-concours">
-            <header class="hp-titre">
+        <div class="contest-section">
+            <header class="section-header">
                 <h2><a th:href="@{/concours}">Derniers concours</a></h2>
             </header>
-            <div class="hp-concours-liste">
-                <div class="concours-container">
+            <div class="contest-list">
+                <div class="contest-grid">
                     <!-- En-tête de la table des concours -->
-                    <header class="concours-header">
-                        <span class="concours-title">Nom</span>
-                        <span class="concours-title">Date</span>
-                        <span class="concours-title">Lieu</span>
+                    <header class="contest-header">
+                        <span class="contest-title">Nom</span>
+                        <span class="contest-title">Date</span>
+                        <span class="contest-title">Lieu</span>
                     </header>
                     <!-- Liste des concours -->
-                    <div th:each="concours : ${concours}" class="concours-row">
-                        <span class="concours-cell" th:text="${concours.nom}"></span>
-                        <span class="concours-cell" th:text="${concours.date}"></span>
-                        <span class="concours-cell" th:text="${concours.lieu}"></span>
+                    <div th:each="concours : ${concours}" class="contest-row">
+                        <span class="contest-cell" th:text="${concours.nom}"></span>
+                        <span class="contest-cell" th:text="${concours.date}"></span>
+                        <span class="contest-cell" th:text="${concours.lieu}"></span>
                     </div>
                 </div>
             </div>
