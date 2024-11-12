@@ -1,0 +1,142 @@
+/* Style global */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Conteneur principal */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Carte */
+.card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Titre */
+.card_title {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Formulaire */
+.card_form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Label des champs */
+.input_label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #555;
+}
+
+/* Champs de saisie */
+.input_field, .input_select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input_field:focus, .input_select:focus {
+    border-color: #3498db;
+}
+
+/* Zone de fichier */
+.file-input {
+    text-align: left;
+}
+
+.file_label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.input_file {
+    width: 100%;
+    font-size: 0.9em;
+    padding: 5px;
+}
+
+/* Image actuelle */
+.current-image {
+    margin: 15px 0;
+    text-align: left;
+}
+
+.image-preview {
+    width: 100px;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Bouton Enregistrer */
+.card_button {
+    padding: 10px;
+    font-size: 1em;
+    color: white;
+    background-color: #2ecc71;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card_button:hover {
+    background-color: #27ae60;
+}
+
+/* Lien Retour */
+.card_info {
+    margin-top: 15px;
+}
+
+.back_link {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.back_link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .card_title {
+        font-size: 1.5em;
+    }
+}
