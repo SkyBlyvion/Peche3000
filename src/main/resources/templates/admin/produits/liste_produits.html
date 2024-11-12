@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Catalogue de Produits</title>
+    <link rel="stylesheet" th:href="@{/css/adminProd.css}">
+    <link rel="stylesheet" href="/css/header.css">
+</head>
+<body>
+<!-- Insertion du Header -->
+<div th:insert="~{_parts/_header :: header}"></div>
+
+<!-- Titre principal -->
+<h1>Catalogue des Produits</h1>
+
+<!-- Bouton pour ajouter un nouveau produit -->
+<a th:href="@{/admin/produits/ajouter}" class="add-product-button">
+    Ajouter un nouveau produit
+</a>
+
+<!-- Conteneur pour tous les produits -->
+<div class="produits-container">
+    <div th:each="produit : ${produits}" class="produit-box">
+        <!-- Image du produit -->
+        <div class="produit-image">
+            <img th:src="${produit.imageUrl}" alt="Image de ${produit.nom}" />
+        </div>
+
+        <!-- Détails du produit -->
+        <div class="produit-details">
+            <h2 th:text="${produit.nom}">Nom du produit</h2>
+            <p th:text="${produit.description}">Description du produit</p>
+
+            <!-- Footer avec prix, stock et actions -->
+            <div class="produit-footer">
+                <span class="produit-prix" th:text="${produit.prix} + ' €'">Prix</span>
+                <span class="produit-stock" th:text="'Stock: ' + ${produit.quantite}">Quantité</span>
+                <div class="produit-actions">
+                    <a th:href="@{/admin/produits/modifier/{id}(id=${produit.id})}" class="modifier-link">
+                        Modifier les détails
+                    </a>
+                    <a th:href="@{/admin/produits/supprimer/{id}(id=${produit.id})}" class="supprimer-link">
+                        Supprimer le produit
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
