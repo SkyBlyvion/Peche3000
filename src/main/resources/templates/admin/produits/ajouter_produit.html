@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un Produit</title>
+    <link rel="stylesheet" href="/css/ajouterproduit.css">
+    <link rel="stylesheet" href="/css/header.css">
+</head>
+<body>
+<!-- Conteneur principal -->
+<div class="container">
+    <div class="card">
+        <h1 class="card_title">Ajouter un Nouveau Produit</h1>
+        <form class="card_form" th:action="@{/admin/produits/ajouter}" method="post" th:object="${produit}" enctype="multipart/form-data">
+            <!-- Nom -->
+            <div class="input">
+                <label for="nom" class="input_label">Nom</label>
+                <input type="text" th:field="*{nom}" id="nom" class="input_field" required/>
+            </div>
+            <!-- Prix -->
+            <div class="input">
+                <label for="prix" class="input_label">Prix (€)</label>
+                <input type="number" step="0.01" th:field="*{prix}" id="prix" class="input_field" required/>
+            </div>
+            <!-- Description -->
+            <div class="input">
+                <label for="description" class="input_label">Description</label>
+                <textarea th:field="*{description}" id="description" class="input_field" rows="3" required></textarea>
+            </div>
+            <!-- Quantité -->
+            <div class="input">
+                <label for="quantite" class="input_label">Quantité</label>
+                <input type="number" th:field="*{quantite}" id="quantite" class="input_field" required/>
+            </div>
+            <!-- Image -->
+            <div class="input file-input">
+                <label for="imageFile" class="file_label">Choisir une Image</label>
+                <input type="file" name="imageFile" id="imageFile" class="input_file" required/>
+            </div>
+            <!-- Catégorie -->
+            <div class="input">
+                <label for="categorie" class="input_label">Catégorie</label>
+                <select id="categorie" name="categorie" class="input_select" required>
+                    <option value="CANNE_A_PECHE">Canne à pêche</option>
+                    <option value="MOULINET">Moulinet</option>
+                    <option value="FIL_DE_PECHE">Fil de pêche</option>
+                    <option value="HAMECONS">Hameçons</option>
+                    <option value="EPUISETTE">Épuisette</option>
+                    <option value="APPATS">Appâts</option>
+                    <option value="CHAPEAU">Chapeau</option>
+                    <option value="VETEMENT">Vêtement</option>
+                    <option value="GANTS">Gants</option>
+                    <option value="SEAU">Seau</option>
+                    <option value="COUTEAU">Couteau</option>
+                </select>
+            </div>
+            <!-- Bouton Ajouter -->
+            <button type="submit" class="card_button">Ajouter</button>
+        </form>
+        <!-- Lien Retour -->
+        <div class="card_info">
+            <p><a th:href="@{/admin/produits}" class="back_link">Retour à la liste des produits</a></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
