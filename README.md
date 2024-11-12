@@ -1,8 +1,10 @@
 # Peche3000
 
-## Load le projet:
-    - 
+## Page Accueil Temporaire
+![accueil.png](./accueil.png)
 
+## Page de Profil
+![profil.png](./profil.png)
 ## Documentation 
     - PreSetup 2h:
         - Dictionnaire des données
