@@ -20,6 +20,9 @@
                 <li><a href="#" data-section="produits">Les produits</a></li>
                 <li><a href="#" data-section="concours">Les concours</a></li>
                 <li><a href="#" data-section="permis">Permis de pêche</a></li>
+                <li th:if="${client.role == T(com.magasinpeche.model.Role).ADMIN}">
+                    <a href="#" data-section="administration">Administration</a>
+                </li>
             </ul>
         </nav>
         <form th:action="@{/logout}" method="post">
@@ -83,7 +86,24 @@
             </div>
         </section>
 
-
+        <!-- Administration Section -->
+        <section id="administration" class="content-section" style="display: none;">
+            <h2>Tableau de bord administratif</h2>
+            <div class="admin-grid">
+                <div class="admin-card">
+                    <h3>Gestion des demandes de permis</h3>
+                    <a th:href="@{/permis/liste}">Consulter et gérer</a>
+                </div>
+                <div class="admin-card">
+                    <h3>Catalogue des produits</h3>
+                    <a th:href="@{/admin/produits}">Gérer et mettre à jour</a>
+                </div>
+                <div class="admin-card">
+                    <h3>Organisation des concours</h3>
+                    <a th:href="@{/admin/concours}">Créer et gérer</a>
+                </div>
+            </div>
+        </section>
     </main>
 </div>
 
