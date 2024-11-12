@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/shop")
+@RequestMapping("/boutique")
 public class ShopController {
 
     private final ProduitService produitService;
@@ -27,14 +27,14 @@ public class ShopController {
         List<Produit> produits = produitService.getAllProduits();
 
         model.addAttribute("produits", produits);
-        return "/shop/liste";
+        return "/boutique/liste";
     }
 
     // page détail
-    @GetMapping("/shop/{id}")
+    @GetMapping("/boutique/{id}")
     public String getProduit(@PathVariable("id") Long id, Model model) {
         Produit produit = produitService.getProduitById(id);
         model.addAttribute("produit", produit);
-        return "/shop/detail";
+        return "/boutique/detail";
     }
 }
