@@ -1,119 +1,188 @@
-# Peche3000
 
-## Page Accueil Temporaire
-![accueil.png](./accueil.png)
+# 🐟 Peche3000 - Gestion de Magasin et Services de Pêche
 
-## Page de Profil
-![profil.png](./profil.png)
-## Documentation 
-    - PreSetup 2h:
-        - Dictionnaire des données
-        - MCD, MLD
+Bienvenue sur **Peche3000**, une application web dédiée à la gestion d'un magasin d'articles de pêche et de ses services annexes (concours, permis, etc.).
 
-    - Setup 1h: 
-        - creation repo, git init, install deps, configure bdd
-        - SDK : correto-17; Amazon Corretto 17.0.13
+---
 
-    - Backend Dev 3h:
-        - créer les entités et enums
-        - créer les services, repositories et controllers
-        - implementer Login et Register
+## **📄 Structure des Pages de l'Application**
 
-    - Frontend Dev 2h:
-        - design templates
-        - style templates
+### **1. Accueil**
+- **Derniers produits** : Aperçu des produits récemment ajoutés.
+- **Derniers concours** : Liste des concours récents.
 
-    - Navigation 1h:
-        - navigation
-        
-    - Reste des pages et customLogic ...h until 18/11/24
+### **2. Boutique**
+- **Catalogue de produits** : Liste complète des produits disponibles à l'achat.
 
-### Creation du Projet :
-    GroupID: com.magasinpeche
-    ArtifactID: SpringBootPeche3000LN
+### **3. Concours**
+- **Liste des concours** : Consultez les concours disponibles et leurs détails.
 
-    sudo mysql -u root -p
+### **4. Profil**
+#### **4.1. Mon Compte**
+- **Données utilisateur** : Affiche les informations personnelles.
 
-    créer la bdd DBMagasinPeche :
-        CREATE DATABASE DBMagasinPeche;
+#### **4.2. Mes Produits**
+- **Produits achetés ou ajoutés** : Historique des produits associés à l'utilisateur.
 
-    créer un user :
-        CREATE USER 'user'@'localhost' IDENTIFIED BY 'admin';
+#### **4.3. Mes Concours**
+- **Participation** : Liste des concours auxquels l'utilisateur participe.
 
-    donner les droits :
-        GRANT ALL PRIVILEGES ON DBMagasinPeche.* TO 'user'@'localhost';
+#### **4.4. Permis de Pêche**
+- **Demander un permis** : Formulaire pour demander un permis.
+- **Suivi des demandes** : Affiche l'état des demandes en cours.
 
-    Flusher :   
-        FLUSH PRIVILEGES;
+#### **4.5. Administration (pour les admins uniquement)**
+- **Gestion des Permis** : Page pour gérer les permis (CRUD).
+- **Gestion des Produits** : Page pour gérer les produits (CRUD).
+- **Gestion des Concours** : Page pour gérer les concours (CRUD).
 
-#### Installer Maven : 
-``sudo apt install maven`` 
-puis check la version
-``mvn -v``
+---
 
-#### installer les dépendences :
-    - spring-boot-starter-data-jpa
-    - spring-boot-starter-security
-    - spring-boot-starter-thymeleaf
-    - spring-boot-starter-web
-    - thymeleaf-extras-springsecurity6
-    - mariadb-java-client
-    - spring-boot-starter-test
-    - spring-security-test
-    - spring-boot-devtools
+## **📸 Aperçu des Pages**
 
-### Entités, enums, services, repositories, controllers, etc.
+### **Page d'Accueil**
+![Accueil](./accueil.png)
 
-### Templates, styles, js etc.
+### **Page de Profil**
+![Profil](./profil.png)
 
+---
 
+## **🛠️ Développement et Documentation**
 
-## Ressources 
-### Dictionnaire des données (entités principales) :
+### **Pré-Setup (2h)**
+- Création du dictionnaire des données.
+- Modélisation MCD et MLD.
 
-Produit :
-id : Identifiant unique (clé primaire)
-nom : Nom du produit
-description : Description du produit
-prix : Prix du produit
-stock : Quantité disponible en stock
-categorie : Catégorie du produit (ex: cannes à pêche, appâts)
-imageUrl : URL de l'image du produit
-DateCreation : Date de création du produit
+### **Setup (1h)**
+- Création du dépôt Git.
+- Initialisation du projet avec les dépendances nécessaires.
+- Configuration de la base de données.
+  - **SDK utilisé** : Amazon Corretto 17.0.13.
 
-Client :
-id : Identifiant unique (clé primaire)
-nom : Nom du client
-prenom : Prénom du client
-email : Adresse email du client
-adresse : Adresse postale du client
-telephone : Numéro de téléphone
-historiqueCommandes : Liste des commandes passées par le client
+### **Backend (3h)**
+- Création des entités et enums.
+- Création des services, repositories et controllers.
+- Implémentation des fonctionnalités de connexion et d'inscription.
 
-Commande :
-id : Identifiant unique (clé primaire)
-client : Référence au client (clé étrangère)
-produits : Liste des produits commandés
-dateCommande : Date de la commande
-total : Montant total de la commande
-statut : Statut de la commande (en attente, expédiée, livrée)
+### **Frontend (2h)**
+- Conception des templates (HTML).
+- Ajout du style (CSS).
 
-Permis de pêche :
-id : Identifiant unique (clé primaire)
-client : Référence au client (clé étrangère)
-statut : Statut de la demande (en attente, approuve, rejeté)
-dateDemande : Date de la demande
+### **Navigation (1h)**
+- Mise en place des routes pour l'utilisateur et l'admin.
 
-Concours :
-id : Identifiant unique (clé primaire)
-nom : Nom du concours
-date : Date du concours
-lieu : Lieu du concours
-description : Description du concours
-participants : Liste des participants (référence à l'entité Client)
+### **Pages Restantes**
+- Customisation et finalisation avant la date limite : **18/11/2024**.
 
-Relations identifiées :
-Un Client peut passer plusieurs Commandes.
-Un Client peut faire plusieurs demandes de Permis de pêche.
-Un Client peut participer à plusieurs Concours.
-Une Commande peut contenir plusieurs Produits.
+---
+
+## **🎯 Création du Projet**
+
+### **GroupID et ArtifactID**
+- **GroupID** : `com.magasinpeche`
+- **ArtifactID** : `SpringBootPeche3000LN`
+
+### **Configuration de la Base de Données**
+1. Accédez à MySQL :
+   ```bash
+   sudo mysql -u root -p
+   ```
+2. Créez la base de données :
+   ```sql
+   CREATE DATABASE DBMagasinPeche;
+   ```
+3. Créez un utilisateur :
+   ```sql
+   CREATE USER 'user'@'localhost' IDENTIFIED BY 'admin';
+   ```
+4. Attribuez les privilèges :
+   ```sql
+   GRANT ALL PRIVILEGES ON DBMagasinPeche.* TO 'user'@'localhost';
+   FLUSH PRIVILEGES;
+   ```
+
+---
+
+## **📦 Dépendances Maven**
+Les dépendances utilisées dans le projet sont :
+- `spring-boot-starter-data-jpa`
+- `spring-boot-starter-security`
+- `spring-boot-starter-thymeleaf`
+- `spring-boot-starter-web`
+- `thymeleaf-extras-springsecurity6`
+- `mariadb-java-client`
+- `spring-boot-starter-test`
+- `spring-security-test`
+- `spring-boot-devtools`
+
+### **Installation Maven**
+1. Installez Maven :
+   ```bash
+   sudo apt install maven
+   ```
+2. Vérifiez l'installation :
+   ```bash
+   mvn -v
+   ```
+
+---
+
+## **🗂️ Ressources**
+
+### **Dictionnaire des Données (Principales Entités)**
+
+#### **Produit**
+- `id` : Identifiant unique.
+- `nom` : Nom du produit.
+- `description` : Description du produit.
+- `prix` : Prix du produit.
+- `stock` : Quantité disponible.
+- `categorie` : Catégorie (ex : cannes à pêche, appâts).
+- `imageUrl` : URL de l'image.
+- `dateCreation` : Date de création.
+
+#### **Client**
+- `id` : Identifiant unique.
+- `nom` : Nom.
+- `prenom` : Prénom.
+- `email` : Adresse email.
+- `adresse` : Adresse postale.
+- `telephone` : Numéro de téléphone.
+- `historiqueCommandes` : Liste des commandes passées.
+
+#### **Commande**
+- `id` : Identifiant unique.
+- `client` : Référence au client.
+- `produits` : Liste des produits commandés.
+- `dateCommande` : Date de la commande.
+- `total` : Montant total.
+- `statut` : Statut (en attente, expédiée, livrée).
+
+#### **Permis de Pêche**
+- `id` : Identifiant unique.
+- `client` : Référence au client.
+- `statut` : Statut de la demande (en attente, approuvé, rejeté).
+- `dateDemande` : Date de la demande.
+
+#### **Concours**
+- `id` : Identifiant unique.
+- `nom` : Nom du concours.
+- `date` : Date du concours.
+- `lieu` : Lieu.
+- `description` : Description.
+- `participants` : Liste des participants (référence au client).
+
+### **Relations**
+- Un **Client** peut :
+  - Passer plusieurs **Commandes**.
+  - Faire plusieurs demandes de **Permis**.
+  - Participer à plusieurs **Concours**.
+- Une **Commande** peut contenir plusieurs **Produits**.
+
+---
+
+## **📅 Objectif Final**
+Créer une application fonctionnelle et intuitive avant le **18 novembre 2024**.
+
+---
