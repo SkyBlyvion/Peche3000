@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Concours</title>
+    <link rel="stylesheet" href="/css/CRUDConcours.css">
+</head>
+<body>
+<main class="form-container">
+    <h1>Ajouter un Concours</h1>
+    <form th:action="@{/admin/concours/ajouter}" method="post">
+        <!-- Nom -->
+        <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" placeholder="Nom du concours" required />
+        </div>
+        <!-- Date -->
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" required />
+        </div>
+        <!-- Lieu -->
+        <div class="form-group">
+            <label for="lieu">Lieu</label>
+            <input type="text" id="lieu" name="lieu" placeholder="Lieu du concours" required />
+        </div>
+        <!-- Description -->
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="4" placeholder="Description du concours" required></textarea>
+        </div>
+        <!-- Bouton Soumettre -->
+        <button type="submit" class="submit-button">Ajouter le Concours</button>
+    </form>
+    <a href="/admin/concours" class="back-link">Retour à la liste des concours</a>
+</main>
+</body>
+</html>

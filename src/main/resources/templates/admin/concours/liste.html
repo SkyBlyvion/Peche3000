@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Concours</title>
+    <link rel="stylesheet" th:href="@{/css/GestionConcours.css}">
+    <link rel="stylesheet" href="/css/header.css">
+</head>
+
+<body>
+<!-- Inclure l'en-tête -->
+<div th:insert="~{_parts/_header :: header}"></div>
+<main>
+    <h1>Gestion des Concours</h1>
+
+    <a href="/admin/concours/ajouter" class="edit-button">Ajouter un Concours</a>
+
+    <div class="concours-container">
+        <div class="concours-header">
+            <div class="concours-title">Nom</div>
+            <div class="concours-title">Date
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 64 64">
+                    <path fill="currentColor"
+                          d="M32 2C15.432 2 2 15.432 2 32s13.432 30 30 30s30-13.432 30-30S48.568 2 32 2m0 47L16 33.695h10.857V15h10.285v18.695H48z"/>
+                </svg>
+            </div>
+            <div class="concours-title">Lieu</div>
+            <div class="concours-title">Description</div>
+            <div class="concours-title">Actions</div>
+        </div>
+
+        <!-- Parcours de la liste des concours -->
+        <div th:each="concours : ${concoursList}" class="concours-row">
+            <div class="concours-cell" th:text="${concours.nom}"></div>
+            <div class="concours-cell" th:text="${concours.date}"></div>
+            <div class="concours-cell" th:text="${concours.lieu}"></div>
+            <div class="concours-cell" th:text="${concours.description}"></div>
+            <div class="concours-cell">
+                <div class="buttons">
+                    <a th:href="@{/admin/concours/modifier/{id}(id=${concours.id})}" class="edit-button">Modifier</a>
+                    <a th:href="@{/admin/concours/supprimer/{id}(id=${concours.id})}"
+                       onclick="return confirm('Voulez-vous vraiment supprimer ce concours ?');"
+                       class="delete-button">Supprimer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+
+</html>
