@@ -9,7 +9,7 @@
 <body>
 <main class="form-container">
     <h1>Modifier un Concours</h1>
-    <form th:action="@{/admin/concours/modifier}" method="post">
+    <form th:action="@{/admin/concours/soumettre}" method="post">
         <input type="hidden" name="id" th:value="${concours.id}" />
         <!-- Nom -->
         <div class="form-group">

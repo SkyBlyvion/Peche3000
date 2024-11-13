@@ -59,9 +59,6 @@ body {
     background-color: #ffffff;
 }
 
-.content-section {
-    display: none;
-}
 
 .content-section:first-child {
     display: block;
@@ -80,15 +77,83 @@ body {
     border-radius: 5px;
 }
 
-.admin-grid {
-    display: flex;
-    gap: 20px;
+/* Section administrative */
+.content-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.admin-card {
-    flex: 1;
-    padding: 15px;
-    background-color: #ecf0f1;
-    border: 1px solid #bdc3c7;
-    border-radius: 5px;
+h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    text-align: center;
 }
+
+/* Grille des cartes */
+.admin-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Carte */
+.admin-card {
+    flex: 1 1 calc(30% - 20px);
+    min-width: 250px;
+    max-width: 300px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.admin-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.admin-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #34495e;
+}
+
+/* Liens dans les cartes */
+.admin-card a {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-top: 10px;
+    font-size: 1em;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #3498db;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.admin-card a:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .admin-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .admin-card {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+}
+
+
+

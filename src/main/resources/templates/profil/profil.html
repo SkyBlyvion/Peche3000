@@ -86,21 +86,24 @@
             </div>
         </section>
 
-        <!-- Administration Section -->
+        <!-- Section Administration -->
         <section id="administration" class="content-section" style="display: none;">
             <h2>Tableau de bord administratif</h2>
             <div class="admin-grid">
+                <!-- Carte Permis -->
                 <div class="admin-card">
-                    <h3>Gestion des demandes de permis</h3>
-                    <a th:href="@{/permis/liste}">Consulter et gérer</a>
+                    <h3>Demandes de permis</h3>
+                    <a th:href="@{/permis/liste}" class="admin-link">Consulter et gérer</a>
                 </div>
+                <!-- Carte Produits -->
                 <div class="admin-card">
                     <h3>Catalogue des produits</h3>
-                    <a th:href="@{/admin/produits}">Gérer et mettre à jour</a>
+                    <a th:href="@{/admin/produits}" class="admin-link">Gérer et mettre à jour</a>
                 </div>
+                <!-- Carte Concours -->
                 <div class="admin-card">
                     <h3>Organisation des concours</h3>
-                    <a th:href="@{/admin/concours}">Créer et gérer</a>
+                    <a th:href="@{/admin/concours}" class="admin-link">Créer et gérer</a>
                 </div>
             </div>
         </section>
