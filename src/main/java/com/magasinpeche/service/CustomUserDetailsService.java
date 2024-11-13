@@ -1,6 +1,7 @@
 package com.magasinpeche.service;
 
 import com.magasinpeche.model.Client;
+import com.magasinpeche.model.Role;
 import com.magasinpeche.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -32,7 +33,6 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .build();
     }
 
-    // Méthode pour obtenir les autorités à partir du rôle
     private Collection<? extends GrantedAuthority> getAuthorities(Client client) {
         return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + client.getRole().name()));
     }
