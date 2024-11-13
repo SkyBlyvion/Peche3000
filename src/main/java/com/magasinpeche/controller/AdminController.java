@@ -118,7 +118,7 @@ public class AdminController {
     @GetMapping("/produits/supprimer/{id}")
     public String supprimerProduit(@PathVariable Long id) {
         produitService.deleteProduit(id);
-        return "admin/produits/confirmation_suppression";
+        return "redirect:/admin/produits";
     }
 
     @DeleteMapping("/produits/{id}")
@@ -128,14 +128,14 @@ public class AdminController {
     }
 
 
-// PageConcours
-
+    //CONCOURS
     @Autowired
     private ConcoursRepository concoursRepository;
 
 
     @GetMapping("/concours")
     public String afficherConcours(Model model) {
+
         LocalDate today = LocalDate.now();
         model.addAttribute("concoursList", concoursRepository.findUpcomingConcoursSortedByDate(today));
         return "admin/concours/liste";
@@ -145,7 +145,7 @@ public class AdminController {
     @GetMapping("/concours/ajouter")
     public String afficherFormulaireConcours(Model model) {
         model.addAttribute("concours", new Concours());
-        return "admin/concours/form";
+        return "admin/concours/ajouter_concours";
     }
 
 
@@ -153,8 +153,9 @@ public class AdminController {
     public String afficherFormulaireModificationConcours(@PathVariable Long id, Model model) {
         Concours concours = concoursRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Concours invalide"));
         model.addAttribute("concours", concours);
-        return "admin/concours/form";
+        return "admin/concours/modifier_concours";
     }
+
 
     @PostMapping("/concours/soumettre")
     public String soumettreConcours(@RequestParam(required = false) Long id,
@@ -176,11 +177,11 @@ public class AdminController {
         return "redirect:/admin/concours";
     }
 
+
     @GetMapping("/concours/supprimer/{id}")
     public String supprimerConcours(@PathVariable Long id) {
         Concours concours = concoursRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Concours invalide"));
         concoursRepository.delete(concours);
-
         return "redirect:/admin/concours";
     }
 
