@@ -47,6 +47,52 @@
             </div>
         </section>
 
+
+
+         <!-- Profil Content
+        <main class="profil-content">
+            Infos Section
+            <section id="infos" class="content-section">
+                <h2>Mes infos</h2>
+
+               Messages de succès et d'erreur
+                <div th:if="${successMessage}" class="alert alert-success">
+                    <p th:text="${successMessage}"></p>
+                </div>
+                <div th:if="${errorMessage}" class="alert alert-danger">
+                    <p th:text="${errorMessage}"></p>
+                </div>
+
+                <form th:action="@{/profil}" method="post" th:object="${clientUpdateDto}" class="info-form">
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h3>Prénom</h3>
+                            <input type="text" th:field="*{prenom}" required>
+                        </div>
+                        <div class="info-card">
+                            <h3>Nom</h3>
+                            <input type="text" th:field="*{nom}" required>
+                        </div>
+                        <div class="info-card">
+                            <h3>Téléphone</h3>
+                            <input type="text" th:field="*{telephone}" required>
+                        </div>
+                        <div class="info-card">
+                            <h3>Email</h3>
+                            <input type="email" th:field="*{email}" required>
+                        </div>
+                        <div class="info-card">
+                            <h3>Adresse</h3>
+                            <input type="text" th:field="*{adresse}" required>
+                        </div>
+                         Autres champs si nécessaire
+                    </div>
+                    <button type="submit" class="save-button">Enregistrer les modifications</button>
+                </form>
+            </section>
+
+            -->
+
         <!-- Other Sections (Produits, Concours, Permis, Administration) -->
         <section id="produits" class="content-section" style="display: none;">
             <h2>Mes produits</h2>
@@ -86,24 +132,21 @@
             </div>
         </section>
 
-        <!-- Section Administration -->
+        <!-- Administration Section -->
         <section id="administration" class="content-section" style="display: none;">
             <h2>Tableau de bord administratif</h2>
             <div class="admin-grid">
-                <!-- Carte Permis -->
                 <div class="admin-card">
                     <h3>Demandes de permis</h3>
-                    <a th:href="@{/permis/liste}" class="admin-link">Consulter et gérer</a>
+                    <a th:href="@{/permis/liste}">Consulter et gérer</a>
                 </div>
-                <!-- Carte Produits -->
                 <div class="admin-card">
                     <h3>Catalogue des produits</h3>
-                    <a th:href="@{/admin/produits}" class="admin-link">Gérer et mettre à jour</a>
+                    <a th:href="@{/admin/produits}">Gérer et mettre à jour</a>
                 </div>
-                <!-- Carte Concours -->
                 <div class="admin-card">
                     <h3>Organisation des concours</h3>
-                    <a th:href="@{/admin/concours}" class="admin-link">Créer et gérer</a>
+                    <a th:href="@{/admin/concours}">Créer et gérer</a>
                 </div>
             </div>
         </section>

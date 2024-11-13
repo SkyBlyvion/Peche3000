@@ -19,10 +19,7 @@ public class ClientService {
     private PasswordEncoder passwordEncoder;
 
     public Client save(Client client) {
-
         client.setRole(Role.USER);
-
-
         client.setPassword(passwordEncoder.encode(client.getPassword()));
         return clientRepository.save(client);
     }
