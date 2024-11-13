@@ -1,0 +1,139 @@
+/* Style global */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+main {
+    padding: 20px;
+}
+
+/* Titre principal */
+h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Bouton Ajouter un Concours */
+.edit-button {
+    display: inline-block;
+    margin: 10px auto 20px;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    font-size: 1em;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+    background-color: #2980b9;
+}
+
+/* Conteneur principal */
+.concours-container {
+    margin: 0 auto;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* En-tête des concours */
+.concours-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr 1fr;
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.concours-title {
+    text-align: center;
+}
+
+/* Lignes des concours */
+.concours-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr 1fr;
+    background-color: #ffffff;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.concours-row:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Cellules des concours */
+.concours-cell {
+    text-align: center;
+    font-size: 1em;
+    color: #555;
+    word-wrap: break-word;
+}
+
+/* Boutons d'actions */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.edit-button,
+.delete-button {
+    padding: 8px 12px;
+    font-size: 0.9em;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button {
+    background-color: #e74c3c;
+}
+
+.delete-button:hover {
+    background-color: #c0392b;
+}
+
+.edit-button {
+    background-color: #3498db;
+}
+
+.edit-button:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .concours-header,
+    .concours-row {
+        grid-template-columns: 1fr;
+    }
+
+    .concours-title,
+    .concours-cell {
+        text-align: left;
+    }
+
+    .buttons {
+        justify-content: flex-start;
+    }
+}
