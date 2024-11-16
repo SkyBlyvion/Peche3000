@@ -41,25 +41,28 @@ application.properties
 ## **📸 Aperçu des Pages**
 
 ### **Page d'Accueil**
-![Accueil](./Photos/Accueil2.png)
+![Accueil](./Photos/Accueil3.png)
 
 ### **Page de Boutique**
-![Boutique](./Photos/Boutique.png)
+![Boutique](./Photos/shop2.png)
 
 ### **Page de Concours**
-![Concours](./Photos/Concours.png)
+![Concours](./Photos/concours2.png)
 
-### **Page de Profil**
-![Profil](./Photos/Profil.png)
+### **Page de Commandes**
+![Commandes](./Photos/Commandes.png)
 
 ### **Page du Pannier**
-![Pannier](./Photos/Pannier.png)
+![Pannier](./Photos/panier2.png)
+
+### **Page de Profil**
+![Profil](./Photos/profil2.png)
 
 ### **Confirmation de paiement sur stripe**
 ![Paiement](./Photos/paiementreussi.png)
 
-### **Voir ses commandes et leurs détails**
-![Commandes](./Photos/MesCommandes.png)
+### **BACKOFFICE**
+![Backoffice](./Photos/backoffice.png)
 
 
 
