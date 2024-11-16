@@ -71,7 +71,8 @@ public class ConcoursController {
 
     /**
      * Inscrit un client à un concours spécifique.
-     * @param id L'identifiant du concours.
+     *
+     * @param id             L'identifiant du concours.
      * @param authentication Objet pour récupérer les informations de l'utilisateur connecté.
      * @return Redirige vers la liste des concours avec un message de succès ou d'erreur.
      */
