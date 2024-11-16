@@ -52,6 +52,9 @@ Bienvenue sur **Peche3000**, une application web dédiée à la gestion d'un mag
 ### **Page de Profil**
 ![Profil](./Photos/Profil.png)
 
+### **Page du Pannier**
+![Pannier](./Photos/Pannier.png)
+
 
 
 ---
@@ -199,19 +202,16 @@ Créer une application fonctionnelle et intuitive avant le **18 novembre 2024**.
 
 * Catégorisation des articles (canne à pêche, appâts, vêtements, etc.). NON
 
-* Affichage des produits avec détails (images, prix, description, disponibilité). OK mais pas de disponibilité
-
 * Permis: Notification par email une fois la demande traitée. NON 
 
 * Concours: Envoi de confirmation et suivi de la participation. 50% il faut envoyer le mail
 
-* Gestion des informations personnelles (nom, prénom, adresse, téléphone, etc.). probleme de doublons 
+* Gestion des informations personnelles (nom, prénom, adresse, téléphone, etc.). probleme de doublons email et resetdurole
 
 * Visualisation des statistiques du magasin (ventes, inscriptions aux concours, demandes de permis). 90% ajouter un graph de ventes maybe
 
 * **Gestion de la boutique en ligne NO**
   - Navigation par catégorie de produits.
   - Filtrage et recherche des articles.
-  - Ajout d’articles au panier et gestion du panier.
   - Paiement sécurisé via une passerelle de paiement (ex: Stripe, PayPal).
   - Suivi des commandes (consultation de l’historique des commandes, état des commandes).
