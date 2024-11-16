@@ -123,6 +123,7 @@
             </div>
         </section>
 
+        <!--OLD SECTION
         <section id="permis" class="content-section" style="display: none;">
             <h2>Permis de pêche</h2>
             <p th:if="${permis == null}">Vous n'avez pas encore de permis en cours de validité. <a href="/permis/demande">Déposer une demande</a></p>
@@ -130,7 +131,34 @@
                 <h3>Statut de votre demande : <span th:text="${permis.statut}"></span></h3>
                 <h3>Date de dépôt de votre demande : <span th:text="${#dates.format(permis.dateDemande, 'dd-MM-yyyy')}"></span></h3>
             </div>
+        </section> -->
+
+        <section id="permis" class="content-section" style="display: none;">
+            <h2>Permis de pêche</h2>
+
+            <!-- Affichage si l'utilisateur n'a pas de permis -->
+            <div th:if="${permis == null}" class="no-permit">
+                <p>Vous n'avez pas encore de permis en cours de validité.</p>
+                <a href="/permis/demande" class="action-button">Déposer une demande</a>
+            </div>
+
+            <!-- Affichage des informations du permis si l'utilisateur a un permis -->
+            <div th:if="${permis != null}" class="permit-info">
+                <h3>Statut de votre demande :</h3>
+                <p th:text="${permis.statut}"
+                   th:class="${'permit-status ' +
+       ((permis.statut == 'ACCEPTE') ? 'status-accepted' : '') +
+       ((permis.statut == 'REJETE') ? 'status-rejected' : '') +
+       ((permis.statut == 'EN_ATTENTE') ? 'status-pending' : '')}">
+                </p>
+
+
+                <h3>Date de dépôt de votre demande :</h3>
+                <p class="permit-date" th:text="${#dates.format(permis.dateDemande, 'dd-MM-yyyy')}"></p>
+            </div>
         </section>
+
+
 
         <!-- Administration Section -->
         <section id="administration" class="content-section" style="display: none;">

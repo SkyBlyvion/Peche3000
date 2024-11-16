@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Liste des Demandes de Permis</title>
+    <link rel="stylesheet" th:href="@{/css/permis.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+</head>
+
+<body>
+<!-- Inclure l'en-tête -->
+<div th:insert="~{_parts/_header :: header}"></div>
+
+<main>
+    <h1>Liste des Demandes de Permis de Pêche</h1>
+
+    <!-- Affichage des messages de succès ou d'erreur -->
+    <div th:if="${successMessage}" class="alert alert-success">
+        <p th:text="${successMessage}"></p>
+    </div>
+    <div th:if="${errorMessage}" class="alert alert-danger">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <div class="demandes-container">
+        <div class="demandes-header">
+            <div>Nom du Client</div>
+            <div>Email</div>
+            <div>Date de Demande</div>
+            <div>Commentaires</div>
+            <div>Statut</div>
+            <div>Actions</div>
+        </div>
+        <div th:each="demande : ${demandes}" class="demande-row">
+            <div th:text="${demande.client.nom} + ' ' + ${demande.client.prenom}"></div>
+            <div th:text="${demande.client.email}"></div>
+            <div th:text="${#dates.format(demande.dateDemande, 'dd/MM/yyyy')}"></div>
+            <div th:text="${demande.commentaires}"></div>
+            <div th:text="${demande.statut}"></div>
+            <div>
+                <form th:action="@{/permis/traiter/{id}(id=${demande.id})}" method="post" class="action-form">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    <input type="hidden" name="statut" value="APPROUVE" />
+                    <button type="submit" class="accept-button">Accepter</button>
+                </form>
+                <form th:action="@{/permis/traiter/{id}(id=${demande.id})}" method="post" class="action-form">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    <input type="hidden" name="statut" value="REJETE" />
+                    <button type="submit" class="reject-button">Rejeter</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+
+</html>

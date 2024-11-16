@@ -2,6 +2,7 @@ package com.magasinpeche.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,6 +13,7 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationSu
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true) // Ajout de cette annotation
 public class SecurityConfig {
 
     @Bean
@@ -19,7 +21,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/css/**", "/js/**", "/images/**", "/register", "/login").permitAll() // Autoriser l'accès à tous pour ces pages
-                        .requestMatchers("/permis/liste", "admin/**").hasRole("ADMIN") // Restreindre l'accès à l'admin
+                        .requestMatchers("/permis/liste", "/admin/**").hasRole("ADMIN") // Restreindre l'accès à l'admin
                         .anyRequest().authenticated() // Toutes les autres requêtes nécessitent une authentification
                 )
                 .formLogin((form) -> form

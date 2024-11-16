@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Demande de Permis de Pêche</title>
+    <link rel="stylesheet" th:href="@{/css/demandepermis.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+</head>
+<body>
+<!-- Inclusion de l'en-tête -->
+<div th:insert="~{_parts/_header :: header}"></div>
+
+<!-- Contenu principal -->
+<main>
+    <h1>Demande de Permis de Pêche</h1>
+    <form th:action="@{/permis/demande}" th:object="${permis}" method="post">
+        <input type="hidden" name="clientId" th:value="${clientId}"/>
+
+        <label for="commentaires">Commentaires :</label>
+        <textarea id="commentaires" th:field="*{commentaires}" required></textarea>
+        <button type="submit">Soumettre la Demande</button>
+    </form>
+    <a class="action-button" th:href="@{/profil}">Retour</a>
+</main>
+</body>
+</html>

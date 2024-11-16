@@ -10,6 +10,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 
@@ -51,6 +52,9 @@ public class PermisController {
         // Associe le client à la demande de permis
         permis.setClient(client);
 
+        // Définir le statut initial de la demande
+        permis.setStatut(Statut.EN_ATTENTE);
+
         // Sauvegarde la demande de permis via le service
         permisService.save(permis);
 
@@ -66,14 +70,18 @@ public class PermisController {
         model.addAttribute("demandes", permisService.findAllOrderedByDate());
 
         // Retourne la vue pour afficher la liste des demandes
-        return "liste";
+        return "permis/liste";
     }
 
     // Traite une demande de permis spécifique (accessible aux administrateurs)
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/traiter/{id}")
-    public String traiterDemande(@PathVariable Long id, @RequestParam Statut statut) {
+    public String traiterDemande(@PathVariable Long id, @RequestParam Statut statut, RedirectAttributes redirectAttributes) {
         // Met à jour le statut de la demande via le service
         permisService.updateStatut(id, statut);
+
+        // Ajouter un message de succès
+        redirectAttributes.addFlashAttribute("successMessage", "La demande a été " + statut.name().toLowerCase() + "e avec succès.");
 
         // TODO : Appeler une méthode pour envoyer une notification par email au client
         // Exemple : notificationService.sendEmail(clientEmail, "Votre demande a été traitée.");
@@ -82,4 +90,3 @@ public class PermisController {
         return "redirect:/permis/liste";
     }
 }
-

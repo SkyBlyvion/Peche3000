@@ -1,0 +1,94 @@
+/* demandepermis.css */
+
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f8;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* Styles pour le formulaire */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 30px 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+textarea {
+    width: 100%;
+    min-height: 150px;
+    resize: vertical;
+    padding: 10px;
+    border: 1px solid #ccd0d5;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #66afe9;
+    box-shadow: 0 0 5px rgba(102,175,233,0.5);
+}
+
+/* Styles pour le bouton de soumission */
+button[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Styles pour le lien de retour */
+.action-button {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007bff;
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
+}
+
+.action-button:hover {
+    text-decoration: underline;
+}
+
+/* Styles pour le conteneur principal */
+main {
+    padding: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    form {
+        padding: 20px;
+    }
+}
