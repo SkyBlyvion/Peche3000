@@ -94,10 +94,42 @@
             -->
 
         <!-- Other Sections (Produits, Concours, Permis, Administration) -->
-        <section id="produits" class="content-section" style="display: none;">
+        <!--<section id="produits" class="content-section" style="display: none;">
             <h2>Mes produits</h2>
             <p>Vos produits favoris et ceux que vous avez achetés sont affichés ici...</p>
+        </section>-->
+        <!-- Section Produits -->
+        <!-- Section Produits -->
+        <section id="produits" class="content-section produits-section" style="display: none;">
+            <h2 class="produits-titre">Mes dernières commandes</h2>
+            <div class="produits-aucune-commande" th:if="${#lists.isEmpty(latestCommandes)}">
+                <p>Vous n'avez pas encore passé de commandes.</p>
+            </div>
+            <div class="produits-commandes" th:unless="${#lists.isEmpty(latestCommandes)}">
+                <table class="produits-table">
+                    <thead>
+                    <tr>
+                        <th>Numéro de Commande</th>
+                        <th>Date</th>
+                        <th>Statut</th>
+                        <th>Total</th>
+                        <th>Détails</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="commande : ${latestCommandes}">
+                        <td data-label="Numéro de Commande" th:text="${commande.id}"></td>
+                        <td data-label="Date" th:text="${#temporals.format(commande.dateCommande, 'dd/MM/yyyy HH:mm')}"></td>
+                        <td data-label="Statut" th:text="${commande.statut}"></td>
+                        <td data-label="Total" th:text="${commande.total} + ' €'"></td>
+                        <td data-label="Détails"><a th:href="@{'/mes-commandes/' + ${commande.id}}" class="produits-detail-link">Voir</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <a th:href="@{/mes-commandes}" class="produits-action-button">Voir toutes mes commandes</a>
+            </div>
         </section>
+
 
         <section id="concours" class="content-section" style="display: none;">
             <h2>Mes concours</h2>

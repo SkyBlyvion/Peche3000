@@ -3,6 +3,7 @@ package com.magasinpeche.service;
 import com.magasinpeche.model.Commande;
 import com.magasinpeche.repository.CommandeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,6 +39,10 @@ public class CommandeService {
 
     public List<Commande> getCommandesByClient(Long clientId) {
         return commandeRepository.findByClientId(clientId);
+    }
+
+    public List<Commande> findLatestByClientId(Long clientId) {
+        return commandeRepository.findTop3ByClientIdOrderByDateCommandeDesc(clientId);
     }
 
 

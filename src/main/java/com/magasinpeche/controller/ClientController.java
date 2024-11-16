@@ -1,10 +1,12 @@
 package com.magasinpeche.controller;
 
 import com.magasinpeche.model.Client;
+import com.magasinpeche.model.Commande;
 import com.magasinpeche.model.Concours;
 import com.magasinpeche.model.Permis;
 import com.magasinpeche.repository.ConcoursRepository;
 import com.magasinpeche.service.ClientService;
+import com.magasinpeche.service.CommandeService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,9 @@ public class ClientController {
     // Repository pour gérer les concours
     @Autowired
     private ConcoursRepository concoursRepository;
+
+    @Autowired
+    private CommandeService commandeService;
 
     // Affiche le formulaire d'inscription
     @GetMapping("/register")
@@ -69,6 +74,12 @@ public class ClientController {
             // Récupère les concours auxquels le client a participé
             List<Concours> participations = concoursRepository.findConcoursByClient(client);
             model.addAttribute("concours", participations);
+
+            // Récupérer les trois dernières commandes
+            if (client != null) {
+                List<Commande> latestCommandes = commandeService.findLatestByClientId(client.getId());
+                model.addAttribute("latestCommandes", latestCommandes);
+            }
         }
         return "profil/profil"; // Affiche la vue du profil
     }

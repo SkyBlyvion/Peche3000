@@ -274,6 +274,120 @@ h2 {
 .status-pending {
     color: #ffc107; /* Jaune pour en attente */
 }
+/* Commandes */
+/* profil.css ou un autre fichier CSS spécifique */
+
+/* Style général pour la section "Produits" */
+.produits-section {
+    padding: 20px;
+}
+
+.produits-section .produits-titre {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Message lorsqu'il n'y a pas de commandes */
+.produits-section .produits-aucune-commande p {
+    text-align: center;
+    color: #555;
+    font-size: 16px;
+}
+
+/* Table des commandes */
+.produits-section .produits-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.produits-section .produits-table thead {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.produits-section .produits-table thead th {
+    padding: 15px;
+    text-align: left;
+    font-weight: normal;
+}
+
+.produits-section .produits-table tbody tr {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.produits-section .produits-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.produits-section .produits-table tbody td {
+    padding: 15px;
+    color: #555;
+}
+
+.produits-section .produits-detail-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.produits-section .produits-detail-link:hover {
+    text-decoration: underline;
+}
+
+/* Bouton "Voir toutes mes commandes" */
+.produits-section .produits-action-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.produits-section .produits-action-button:hover {
+    background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .produits-section .produits-table,
+    .produits-section .produits-table thead,
+    .produits-section .produits-table tbody,
+    .produits-section .produits-table th,
+    .produits-section .produits-table td,
+    .produits-section .produits-table tr {
+        display: block;
+    }
+
+    .produits-section .produits-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .produits-section .produits-table tr {
+        margin-bottom: 15px;
+    }
+
+    .produits-section .produits-table td {
+        padding: 10px;
+        text-align: right;
+        position: relative;
+    }
+
+    .produits-section .produits-table td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 50%;
+        padding-right: 15px;
+        font-weight: bold;
+        text-align: left;
+    }
+}
+
 
 
 /* Concours Profil */
