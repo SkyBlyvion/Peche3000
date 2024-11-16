@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mes Commandes</title>
+    <link rel="stylesheet" th:href="@{/css/mes-commandes.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+</head>
+<body>
+<!-- Inclure l'en-tête si nécessaire -->
+
+<!-- Header -->
+<div th:insert="~{_parts/_header :: header}"></div>
+
+<h1>Mes Commandes</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Numéro de Commande</th>
+        <th>Date</th>
+        <th>Statut</th>
+        <th>Total</th>
+        <th>Détails</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="commande : ${commandes}">
+        <td data-label="Numéro de Commande" th:text="${commande.id}"></td>
+        <td data-label="Date" th:text="${#temporals.format(commande.dateCommande, 'dd/MM/yyyy HH:mm')}"></td>
+        <td data-label="Statut" th:text="${commande.statut}"></td>
+        <td data-label="Total" th:text="${commande.total} + ' €'"></td>
+        <td data-label="Détails"><a th:href="@{'/mes-commandes/' + ${commande.id}}">Voir</a></td>
+    </tr>
+    </tbody>
+
+</table>
+</body>
+</html>

@@ -55,6 +55,12 @@ application.properties
 ### **Page du Pannier**
 ![Pannier](./Photos/Pannier.png)
 
+### **Confirmation de paiement sur stripe**
+![Paiement](./Photos/paiementreussi.png)
+
+### **Voir ses commandes et leurs détails**
+![Commandes](./Photos/MesCommandes.png)
+
 
 
 ---
@@ -200,9 +206,7 @@ Créer une application fonctionnelle et intuitive avant le **18 novembre 2024**.
 
 # TODO LIST :
 
-* Catégorisation des articles (canne à pêche, appâts, vêtements, etc.). NON
-
-* Permis: Notification par email une fois la demande traitée. NON 
+* Permis: Notification par email une fois la demande traitée. NON il faut envoyer le mail
 
 * Concours: Envoi de confirmation et suivi de la participation. 50% il faut envoyer le mail
 
@@ -213,5 +217,3 @@ Créer une application fonctionnelle et intuitive avant le **18 novembre 2024**.
 * **Gestion de la boutique en ligne NO**
   - Navigation par catégorie de produits.
   - Filtrage et recherche des articles.
-  - Paiement sécurisé via une passerelle de paiement (ex: Stripe, PayPal).
-  - Suivi des commandes (consultation de l’historique des commandes, état des commandes).

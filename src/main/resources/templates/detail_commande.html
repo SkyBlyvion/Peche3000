@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Détails de la Commande</title>
+    <link rel="stylesheet" th:href="@{/css/detail_commandes.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+</head>
+<body>
+
+<!-- Header -->
+<div th:insert="~{_parts/_header :: header}"></div>
+
+
+<!-- Inclure l'en-tête si nécessaire -->
+<h1>Détails de la Commande #<span th:text="${commande.id}"></span></h1>
+<p>Date : <span th:text="${#temporals.format(commande.dateCommande, 'dd/MM/yyyy HH:mm')}"></span></p>
+<p>Statut : <span th:text="${commande.statut}"></span></p>
+
+<h2>Articles Commandés</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Produit</th>
+        <th>Quantité</th>
+        <th>Prix Unitaire</th>
+        <th>Sous-total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ligne : ${commande.lignesCommande}">
+        <td data-label="Produit" th:text="${ligne.produit.nom}"></td>
+        <td data-label="Quantité" th:text="${ligne.quantite}"></td>
+        <td data-label="Prix Unitaire" th:text="${ligne.prixUnitaire} + ' €'"></td>
+        <td data-label="Sous-total" th:text="${ligne.quantite * ligne.prixUnitaire} + ' €'"></td>
+    </tr>
+    </tbody>
+
+</table>
+
+<h3>Total : <span th:text="${commande.total} + ' €'"></span></h3>
+
+<a class="abtn" th:href="@{/mes-commandes}">Retour à mes commandes</a>
+</body>
+</html>

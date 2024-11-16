@@ -2,6 +2,7 @@ package com.magasinpeche.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class Commande {
@@ -16,6 +17,10 @@ public class Commande {
     private LocalDateTime dateCommande;
     private String statut; // 'en_attente', 'envoyee', 'livree', 'annulee'
     private Double total;
+
+    // Liste des lignes de commande
+    @OneToMany(mappedBy = "commande", cascade = CascadeType.ALL)
+    private List<LigneCommande> lignesCommande;
 
     // Constructeurs
     public Commande() {
@@ -33,9 +38,9 @@ public class Commande {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    //public void setId(Long id) {
+    //    this.id = id;
+    //}
 
     public Client getClient() {
         return client;
@@ -67,5 +72,13 @@ public class Commande {
 
     public void setTotal(Double total) {
         this.total = total;
+    }
+
+    public List<LigneCommande> getLignesCommande() {
+        return lignesCommande;
+    }
+
+    public void setLignesCommande(List<LigneCommande> lignesCommande) {
+        this.lignesCommande = lignesCommande;
     }
 }

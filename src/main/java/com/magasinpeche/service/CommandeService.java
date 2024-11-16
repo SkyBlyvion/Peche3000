@@ -36,6 +36,11 @@ public class CommandeService {
         return null;
     }
 
+    public List<Commande> getCommandesByClient(Long clientId) {
+        return commandeRepository.findByClientId(clientId);
+    }
+
+
     public void deleteCommande(Long id) {
         commandeRepository.deleteById(id);
     }

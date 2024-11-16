@@ -2,17 +2,25 @@ package com.magasinpeche.controller;
 
 import com.magasinpeche.model.Cart;
 import com.magasinpeche.model.CartItem;
+import com.magasinpeche.model.Client;
 import com.magasinpeche.model.Commande;
+import com.magasinpeche.model.LigneCommande;
+import com.magasinpeche.service.ClientService;
 import com.magasinpeche.service.CommandeService;
 import com.stripe.exception.StripeException;
 import com.stripe.model.checkout.Session;
 import com.stripe.param.checkout.SessionCreateParams;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication; // Import correct
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/paiement")
@@ -21,6 +29,9 @@ public class PaiementController {
 
     @Autowired
     private CommandeService commandeService;
+
+    @Autowired
+    private ClientService utilisateurService;
 
     @GetMapping
     public String paiement(@ModelAttribute("cart") Cart cart, Model model) throws StripeException {
@@ -60,15 +71,41 @@ public class PaiementController {
     }
 
     @GetMapping("/success")
-    public String paiementSuccess(@ModelAttribute("cart") Cart cart, SessionStatus status) {
-        // Enregistrer la commande dans la base de données
+    public String paiementSuccess(@ModelAttribute("cart") Cart cart, SessionStatus status, Authentication authentication) {
+        // Récupérer l'email de l'utilisateur connecté
+        String email = authentication.getName();
+
+        // Charger le Client depuis la base de données
+        Optional<Client> clientOpt = utilisateurService.findByEmail(email);
+
+        if (!clientOpt.isPresent()) {
+            // Gérer le cas où le client n'est pas trouvé (redirection, message d'erreur, etc.)
+            return "redirect:/login";
+        }
+
+        Client client = clientOpt.get();
+
+        // Créer la commande
         Commande commande = new Commande();
-        // Définissez les propriétés de la commande, par exemple :
-        // commande.setClient(utilisateurConnecté);
-        // commande.setDateCommande(LocalDateTime.now());
-        // commande.setStatut("payée");
-        // commande.setTotal(cart.getTotal());
-        // commandeService.createCommande(commande);
+        commande.setClient(client);
+        commande.setDateCommande(LocalDateTime.now());
+        commande.setStatut("payée");
+        commande.setTotal(cart.getTotal());
+
+        // Créer les lignes de commande
+        List<LigneCommande> lignesCommande = new ArrayList<>();
+        for (CartItem item : cart.getItems()) {
+            LigneCommande ligne = new LigneCommande();
+            ligne.setCommande(commande); // Associe la ligne à la commande
+            ligne.setProduit(item.getProduit());
+            ligne.setQuantite(item.getQuantity());
+            ligne.setPrixUnitaire(item.getProduit().getPrix());
+            lignesCommande.add(ligne);
+        }
+        commande.setLignesCommande(lignesCommande);
+
+        // Enregistrer la commande
+        commandeService.createCommande(commande);
 
         // Vider le panier
         cart.clear();
@@ -76,6 +113,7 @@ public class PaiementController {
 
         return "paiement_success";
     }
+
 
     @GetMapping("/cancel")
     public String paiementCancel() {
