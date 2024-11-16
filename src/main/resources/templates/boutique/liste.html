@@ -47,6 +47,12 @@
                             </div>
                         </div>
                     </a>
+                    <!-- Formulaire Ajouter au Panier -->
+                    <form th:action="@{/panier/ajouter}" method="post" class="ajouter-panier-form">
+                        <input type="hidden" name="produitId" th:value="${produit.id}" />
+                        <input type="number" name="quantity" value="1" min="1" class="quantity-input" />
+                        <button type="submit" class="add-to-cart-button">Ajouter au Panier</button>
+                    </form>
                 </div>
             </div>
         </div>

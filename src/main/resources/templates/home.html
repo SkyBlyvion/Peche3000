@@ -23,19 +23,21 @@
             <div class="product-list">
                 <div class="product-grid">
                     <div th:each="produit : ${produits}" class="product-card">
-                        <!-- Image du produit -->
-                        <div class="product-image">
-                            <img th:src="${produit.imageUrl}" alt="Image de produit : ${produit.nom}"/>
-                        </div>
-                        <!-- Détails du produit -->
-                        <div class="product-details">
-                            <h3 th:text="${produit.nom}"></h3>
-                            <p th:text="${produit.description}"></p>
-                            <footer class="product-footer">
-                                <span class="product-price" th:text="${produit.prix} + ' €'"></span>
-                                <span class="product-stock" th:text="'Stock : ' + ${produit.quantite}"></span>
-                            </footer>
-                        </div>
+                        <a class="produit-link" th:href="@{'/boutique/boutique/' + ${produit.id}}">
+                            <!-- Image du produit -->
+                            <div class="product-image">
+                                <img th:src="${produit.imageUrl}" alt="Image de produit : ${produit.nom}"/>
+                            </div>
+                            <!-- Détails du produit -->
+                            <div class="product-details">
+                                <h3 th:text="${produit.nom}"></h3>
+                                <p th:text="${produit.description}"></p>
+                                <footer class="product-footer">
+                                    <span class="product-price" th:text="${produit.prix} + ' €'"></span>
+                                    <span class="product-stock" th:text="'Stock : ' + ${produit.quantite}"></span>
+                                </footer>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>

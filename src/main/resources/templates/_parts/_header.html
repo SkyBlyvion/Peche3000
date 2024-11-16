@@ -36,6 +36,17 @@
         </ul>
     </nav>
     <div class="header-misc">
+        <!-- Panier -->
+        <div class="cart-container">
+            <a th:href="@{/panier}" class="cart-link" title="Panier">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M10 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm7 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM4.22 3a1 1 0 0 0-.98 1.2l1.6 8A3 3 0 0 0 7.79 14h10.32a3 3 0 0 0 2.95-2.8l1-8A1 1 0 0 0 21 2H5.61L4.22 3zm1.57 2h14.02l-.8 6.4a1 1 0 0 1-.99.8H7.79a1 1 0 0 1-.98-.8L5.79 5z"/>
+                </svg>
+                <!--<span class="cart-count" th:text="${cart != null ? cart.size() : 0}"></span> -->
+            </a>
+        </div>
+
+        <!-- Profil -->
         <div class="profile-container">
             <a th:href="@{/profil}" class="misc-link" title="Profil">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">

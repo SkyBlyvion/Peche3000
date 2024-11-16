@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mon Panier</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/panier.css}">
+</head>
+<body >
+<!-- En-tête -->
+<div th:insert="~{_parts/_header :: header}"></div>
+
+<!-- Contenu principal -->
+<h1 class="h1-panier">Mon Panier</h1>
+<div class="divpr">
+
+    <table class="table-panier">
+        <thead class="thead-panier">
+        <tr>
+            <th class="th-panier">Produit</th>
+            <th class="th-panier">Prix</th>
+            <th class="th-panier">Quantité</th>
+            <th class="th-panier">Sous-total</th>
+            <th class="th-panier">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="tr-panier" th:each="item : ${items}">
+            <td class="td-panier" th:text="${item.produit.nom}"></td>
+            <td class="td-panier" th:text="${item.produit.prix}"></td>
+            <td class="td-panier">
+                <form class="form-panier" th:action="@{/panier/mettre-a-jour}" method="post">
+                    <input type="hidden" name="produitId" th:value="${item.produit.id}"/>
+                    <input class="input-number-panier" type="number" name="quantity" th:value="${item.quantity}" min="1"/>
+                    <button class="button-panier" type="submit">Mettre à jour</button>
+                </form>
+            </td>
+            <td class="td-panier" th:text="${item.produit.prix * item.quantity}"></td>
+            <td class="td-panier">
+                <form class="form-panier" th:action="@{/panier/supprimer}" method="post">
+                    <input type="hidden" name="produitId" th:value="${item.produit.id}"/>
+                    <button class="button-panier" type="submit">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2 class="h2-panier">Total: <span th:text="${total}"></span> €</h2>
+<div class="boutons">
+    <form class="form-panier" th:action="@{/panier/vider}" method="post">
+        <button class="button-panier" type="submit">Vider le Panier</button>
+    </form>
+
+    <a class="link-panier" th:href="@{/paiement}">Passer au Paiement</a>
+</div>
+</body>
+</html>
