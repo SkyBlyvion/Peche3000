@@ -5,38 +5,38 @@ Bienvenue sur **Peche3000**, une application web dédiée à la gestion d'un mag
 
 ---
 
-## **📄 Structure des Pages de l'Application**
+## **📂 Structure des Fichiers**
 
-### **1. Accueil**
-- **Derniers produits** : Aperçu des produits récemment ajoutés.
-- **Derniers concours** : Liste des concours récents.
-
-### **2. Boutique**
-- **Catalogue de produits** : Liste complète des produits disponibles à l'achat.
-
-### **3. Concours**
-- **Liste des concours** : Consultez les concours disponibles et leurs détails.
-
-### **4. Profil**
-#### **4.1. Mon Compte**
-- **Données utilisateur** : Affiche les informations personnelles.
-
-#### **4.2. Mes Produits**
-- **Produits achetés ou ajoutés** : Historique des produits associés à l'utilisateur.
-
-#### **4.3. Mes Concours**
-- **Participation** : Liste des concours auxquels l'utilisateur participe.
-
-#### **4.4. Permis de Pêche**
-- **Demander un permis** : Formulaire pour demander un permis.
-- **Suivi des demandes** : Affiche l'état des demandes en cours.
-
-#### **4.5. Administration (pour les admins uniquement)**
-- **Gestion des Permis** : Page pour gérer les permis (CRUD).
-- **Gestion des Produits** : Page pour gérer les produits (CRUD).
-- **Gestion des Concours** : Page pour gérer les concours (CRUD).
-
----
+```
+templates/
+├── _parts/
+│   └── _header.html
+├── admin/
+│   ├── concours/
+│   │   ├── ajouter_concours.html
+│   │   ├── liste.html
+│   │   └── modifier_concours.html
+│   ├── produits/
+│   │   ├── ajouter_produit.html
+│   │   ├── liste_produits.html
+│   │   └── modifier_produit.html
+├── boutique/
+│   ├── detail.html
+│   └── liste.html
+├── concours/
+│   ├── liste.html
+│   └── participants.html
+├── permis/
+│   ├── demande.html
+│   └── liste.html
+├── profil/
+│   ├── profil.html
+│   ├── home.html
+│   ├── login.html
+│   ├── panier.html
+│   └── register.html
+application.properties
+```
 
 ## **📸 Aperçu des Pages**
 
