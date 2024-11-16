@@ -91,6 +91,14 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- Ajout de Stripe -->
+        <dependency>
+            <groupId>com.stripe</groupId>
+            <artifactId>stripe-java</artifactId>
+            <version>23.0.0</version>
+        </dependency>
+
         <!-- Spring Boot DevTools -->
         <!--<dependency>
             <groupId>org.springframework.boot</groupId>
@@ -98,6 +106,7 @@
             <scope>runtime</scope>
         </dependency>-->
     </dependencies>
+
 
     <build> <!-- configure les paramètres de compilation et les plugins -->
         <plugins>

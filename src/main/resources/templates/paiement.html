@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Paiement</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+<h1>Paiement</h1>
+<button id="checkout-button">Payer</button>
+
+<script type="text/javascript">
+    var stripe = Stripe('pk_test_51QLsEbFdUMS6Sv5vmG2vGdKV6BSpAzTQvWG0gid7blc0s2FsyQlhKcAOrcf7hawe4TnbpdSEqHO5Ayx2Pyo1MFZO00Ipcd4Nfm');
+
+    document.getElementById('checkout-button').addEventListener('click', function () {
+        stripe.redirectToCheckout({
+            sessionId: /*[[${sessionId}]]*/
+                '[(${sessionId})]'
+        }).then(function (result) {
+            // Gestion des erreurs
+        });
+    });
+</script>
+</body>
+</html>
