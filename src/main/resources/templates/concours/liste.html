@@ -48,6 +48,7 @@
             <div class="concours-cell" th:text="${concours.description}"></div>
             <div class="concours-cell">
                 <div class="buttons">
+                    <a th:href="@{/concours/suivi/{id}(id=${concours.id})}" class="view-button">Voir Participants</a>
                     <div th:if="${concours.dejaInscrit}">
                         <span class="already-registered">Déjà inscrit</span>
                     </div>

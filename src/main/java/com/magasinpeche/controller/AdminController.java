@@ -1,9 +1,8 @@
 package com.magasinpeche.controller;
 
-import com.magasinpeche.model.Categorie;
-import com.magasinpeche.model.Concours;
-import com.magasinpeche.model.Produit;
+import com.magasinpeche.model.*;
 import com.magasinpeche.repository.ConcoursRepository;
+import com.magasinpeche.repository.ParticipationRepository;
 import com.magasinpeche.service.ProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +17,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 // Définition du contrôleur pour gérer les actions administratives.
 @Controller

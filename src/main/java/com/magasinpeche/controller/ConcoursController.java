@@ -9,10 +9,7 @@ import com.magasinpeche.repository.ConcoursRepository;
 import com.magasinpeche.repository.ParticipationRepository;
 import com.magasinpeche.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/concours") // Définit la route de base pour ce contrôleur : "/concours".
@@ -110,22 +109,33 @@ public class ConcoursController {
     /**
      * Affiche le suivi des participations de l'utilisateur connecté.
      * @param model Objet Model pour passer les données à la vue.
-     * @param authentication Objet pour récupérer les informations de l'utilisateur connecté.
+     * @param id L'identifiant du concours.
      * @return La vue "concours/suivi-participations".
      */
-    @GetMapping("/suivi")
-    public String suiviParticipations(Model model, Authentication authentication) {
-        // Récupère l'email du client actuellement connecté.
-        String emailClient = authentication.getName();
-        Client client = clientRepository.findByEmail(emailClient)
-                .orElseThrow(() -> new RuntimeException("Client non trouvé"));
+    @GetMapping("/suivi/{id}")
+    public String afficherParticipants(@PathVariable Long id, Model model) {
+        // Récupérer le concours par son ID
+        Optional<Concours> optionalConcours = concoursRepository.findById(id);
+        if (!optionalConcours.isPresent()) {
+            model.addAttribute("errorMessage", "Concours non trouvé.");
+            return "concours/participants";
+        }
+        Concours concours = optionalConcours.get();
 
-        // Récupère les concours auxquels le client participe.
-        List<Concours> participations = concoursRepository.findConcoursByClient(client);
+        // Récupérer les participations associées à ce concours
+        List<Participation> participations = participationRepository.findByConcours(concours);
 
-        // Ajoute les participations au modèle pour les afficher dans la vue.
-        model.addAttribute("participations", participations);
-        return "concours/suivi-participations"; // Retourne la vue pour le suivi des participations.
+        // Extraire les clients des participations
+        List<Client> participants = participations.stream()
+                .map(Participation::getClient)
+                .collect(Collectors.toList());
+
+        // Ajouter les données au modèle
+        model.addAttribute("concours", concours);
+        model.addAttribute("participants", participants);
+
+        // Retourner la vue pour afficher les participants
+        return "concours/participants";
     }
 
     /**

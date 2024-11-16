@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Participants du Concours</title>
+    <link rel="stylesheet" th:href="@{/css/participants.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+</head>
+
+<body>
+<!-- Inclure l'en-tête -->
+<div th:insert="~{_parts/_header :: header}"></div>
+
+<main>
+    <h1>Participants du Concours : <span th:text="${concours.nom}"></span></h1>
+    <h2>Date : <span th:text="${#temporals.format(concours.date, 'dd/MM/yyyy')}"></span></h2>
+    <h2>Lieu : <span th:text="${concours.lieu}"></span></h2>
+
+    <div class="participants-container">
+        <div class="participants-header">
+            <div>Nom</div>
+            <div>Prénom</div>
+            <div>Email</div>
+            <div>Téléphone</div>
+            <div>Permis Acquis</div>
+            <!-- Ajoutez d'autres informations si nécessaire -->
+        </div>
+        <div th:if="${#lists.isEmpty(participants)}">
+            <p>Aucun participant inscrit pour ce concours.</p>
+        </div>
+        <div th:each="participant : ${participants}" class="participant-row">
+            <div th:text="${participant.nom}"></div>
+            <div th:text="${participant.prenom}"></div>
+            <div th:text="${participant.email}"></div>
+            <div th:text="${participant.telephone}"></div>
+            <div th:text="${participant.permis}"></div>
+            <!-- Ajoutez d'autres informations si nécessaire -->
+        </div>
+    </div>
+    <a href="/concours" class="back-button">Retour à la liste des concours</a>
+</main>
+</body>
+
+</html>

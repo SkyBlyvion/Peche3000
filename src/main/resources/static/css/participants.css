@@ -1,0 +1,52 @@
+/* participants.css */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.participants-container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.participants-header, .participant-row {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.participants-header {
+    font-weight: bold;
+    background-color: #f5f5f5;
+}
+
+.participant-row:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.participant-row div {
+    padding: 5px;
+}
+
+.back-button {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}

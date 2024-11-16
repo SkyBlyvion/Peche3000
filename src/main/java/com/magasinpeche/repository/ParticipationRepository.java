@@ -16,4 +16,7 @@ public interface ParticipationRepository extends JpaRepository<Participation, Lo
 
     // Rechercher les participations d'un client (avec l'email)
     Participation findByConcoursAndClient(Concours concours, Client client);
+
+    // **Nouvelle méthode pour trouver les participations à un concours**
+    List<Participation> findByConcours(Concours concours);
 }
