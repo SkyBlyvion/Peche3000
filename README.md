@@ -41,35 +41,43 @@ Bienvenue sur **Peche3000**, une application web dédiée à la gestion d'un mag
 ## **📸 Aperçu des Pages**
 
 ### **Page d'Accueil**
-![Accueil](./accueil.png)
+![Accueil](./Photos/Accueil2.png)
+
+### **Page de Boutique**
+![Boutique](./Photos/Boutique.png)
+
+### **Page de Concours**
+![Concours](./Photos/Concours.png)
 
 ### **Page de Profil**
-![Profil](./profil.png)
+![Profil](./Photos/Profil.png)
+
+
 
 ---
 
 ## **🛠️ Développement et Documentation**
 
-### **Pré-Setup (2h)**
+### **Pré-Setup**
 - Création du dictionnaire des données.
 - Modélisation MCD et MLD.
 
-### **Setup (1h)**
+### **Setup**
 - Création du dépôt Git.
 - Initialisation du projet avec les dépendances nécessaires.
 - Configuration de la base de données.
   - **SDK utilisé** : Amazon Corretto 17.0.13.
 
-### **Backend (3h)**
+### **Backend**
 - Création des entités et enums.
 - Création des services, repositories et controllers.
 - Implémentation des fonctionnalités de connexion et d'inscription.
 
-### **Frontend (2h)**
+### **Frontend**
 - Conception des templates (HTML).
 - Ajout du style (CSS).
 
-### **Navigation (1h)**
+### **Navigation**
 - Mise en place des routes pour l'utilisateur et l'admin.
 
 ### **Pages Restantes**
@@ -186,3 +194,24 @@ Les dépendances utilisées dans le projet sont :
 Créer une application fonctionnelle et intuitive avant le **18 novembre 2024**.
 
 ---
+
+# TODO LIST :
+
+* Catégorisation des articles (canne à pêche, appâts, vêtements, etc.). NON
+
+* Affichage des produits avec détails (images, prix, description, disponibilité). OK mais pas de disponibilité
+
+* Permis: Notification par email une fois la demande traitée. NON 
+
+* Concours: Envoi de confirmation et suivi de la participation. 50% il faut envoyer le mail
+
+* Gestion des informations personnelles (nom, prénom, adresse, téléphone, etc.). probleme de doublons 
+
+* Visualisation des statistiques du magasin (ventes, inscriptions aux concours, demandes de permis). 90% ajouter un graph de ventes maybe
+
+* **Gestion de la boutique en ligne NO**
+  - Navigation par catégorie de produits.
+  - Filtrage et recherche des articles.
+  - Ajout d’articles au panier et gestion du panier.
+  - Paiement sécurisé via une passerelle de paiement (ex: Stripe, PayPal).
+  - Suivi des commandes (consultation de l’historique des commandes, état des commandes).
