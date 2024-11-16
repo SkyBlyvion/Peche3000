@@ -7,13 +7,23 @@ body {
     color: #333;
 }
 
+a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
 main {
     padding: 20px;
     max-width: 1200px;
     margin: auto;
 }
 
-h1 {
+.HUn {
     text-align: center;
     font-size: 2em;
     color: #2c3e50;
